@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+body {
+    background-color: #6B7A8F;
+}
+
+#navbar {
+    background-color: #F7882F;
+    text-align: center;
+}
+
+.current-tab {
+    background-color:#F7C331;
+}
+
+#main-header {
+    display: flex;
+    justify-content: center;
+    color: #F7C331;
+}
+
+/* input {
+    margin: 10px;
+} */
+
+input:hover {
+    background-color: lightblue;
+}
+
+button:hover {
+    background-color: lightblue;
+}
+
+#description:hover {
+    background-color: lightblue;
+}
+
+#username:hover, #password:hover, #login-btn:hover{
+    background-color:lightblue;
+}
+
+#tab-1:hover, #tab-2:hover, #tab-3:hover, #tab-4:hover, #tab-5:hover {
+    background-color: #F7C331;
+}
+
+#username-div, #password-div, #login-btn-div {
+   margin-top: 3px;
+}
+
+#login-btn-div {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+/* #employee-table th {
+    margin: 10px;
+} */
+
+td {
+    padding: 10px;
+}
+
+#main-div {
+    display: flex;
+    justify-content: center;
+}
+
+#content-div {
+    background-color: #F7882F;
+    padding: 10px;
+    border-style: solid;
+    border-color: #F7C331;
+    border-width: 3px;
+}
+
+#employee-table>tr {
+    padding:3px;
+    background-color: white;
+    border-style: solid;
+    border-color: #F7882F;
+    border-width: 5px;
+}
+
+span {
+    font-weight: bold;
+}
+
+#div-for-warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#div-for-warning>p {
+    color:red;
+    padding:3px 5px;
+    background-color:white;
+    /* border-width:100px;
+    border-color:#F7C331; */
+}
+
+/* #logo-div {
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+} */

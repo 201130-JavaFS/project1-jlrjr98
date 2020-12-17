@@ -1,0 +1,156 @@
+2020-12-16 05:05:21 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 05:05:21 INFO  MasterServlet:37 - info test
+2020-12-16 05:05:21 DEBUG MasterServlet:39 - in doGet
+2020-12-16 05:07:38 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 05:07:38 INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:07:43 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:07:43 INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:08:52 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:08:52 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:08:52 DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:08:52 INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:08:52 DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:08:52 DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:08:52 DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:08:52 DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:08:53 DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:09:49 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:09:49 DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:09:49 DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:09:49 INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:09:49 DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:09:49 DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:09:49 DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:09:49 DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:09:49 DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:11:37 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:11:37 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:11:51 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:11:51 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:11:51 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:11:51 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:11:51 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:11:51 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:11:51 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:11:51 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:11:52 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:11:52 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:11:52 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:11:52 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:11:52 HST DEBUG MasterServlet:80 - About to enter employee controller
+2020-12-16 09:11:52 HST DEBUG TicketController:33 - in TicketController
+2020-12-16 09:24:07 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:24:07 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:24:17 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:24:17 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:24:17 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:24:17 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:24:17 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:24:17 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:24:17 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:24:17 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:24:18 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:24:18 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:24:18 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:24:18 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:24:18 HST DEBUG MasterServlet:80 - About to enter employee controller
+2020-12-16 09:24:18 HST DEBUG TicketController:33 - in TicketController
+2020-12-16 09:30:16 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:30:17 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:30:17 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:30:17 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:30:17 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:30:17 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:30:17 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:30:17 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:30:17 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:31:34 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:31:34 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:31:34 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:31:34 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:31:34 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:31:34 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:31:34 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:31:34 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:31:35 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:36:01 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:36:01 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:36:01 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:36:01 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:36:01 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:36:01 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:36:01 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:36:01 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:36:01 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:42:35 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:42:35 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:42:35 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:42:35 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:42:35 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:42:35 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:42:35 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:42:35 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:42:35 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:44:13 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:44:13 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:44:13 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:44:13 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:44:13 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:44:13 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:44:13 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:44:13 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:44:13 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:44:45 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:44:45 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:44:45 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:44:45 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:44:45 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:44:45 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:44:45 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:44:45 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:44:45 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:46:33 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:46:33 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:46:33 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:46:33 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:46:33 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:46:33 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:46:33 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:46:33 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:46:33 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:47:57 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:47:57 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:47:57 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:47:57 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:47:57 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:47:57 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:47:57 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:47:57 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:47:57 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:50:50 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:50:50 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:50:50 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:50:50 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:50:50 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:50:50 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:50:50 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:50:50 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:50:50 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:54:53 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:54:53 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:54:53 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:54:53 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:54:53 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:54:53 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:54:53 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:54:53 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:54:53 HST DEBUG LoginController:52 - Exiting Service
+2020-12-16 09:57:40 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:57:40 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-16 09:57:40 HST DEBUG MasterServlet:114 - in doPost
+2020-12-16 09:57:40 HST INFO  MasterServlet:36 - Server is Started
+2020-12-16 09:57:40 HST DEBUG MasterServlet:49 - About to enter LoginController
+2020-12-16 09:57:40 HST DEBUG LoginController:29 - in LoginController login
+2020-12-16 09:57:40 HST DEBUG LoginController:46 - About to Enter Service
+2020-12-16 09:57:40 HST DEBUG RevSearchDAOImpl:29 - In DAO. About to Enter Database.
+2020-12-16 09:57:40 HST DEBUG LoginController:52 - Exiting Service

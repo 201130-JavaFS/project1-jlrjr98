@@ -1,0 +1,61 @@
+package com.revature.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.revature.dao.RevSearchDAO;
+import com.revature.dao.impl.RevSearchDAOImpl;
+import com.revature.exception.BusinessException;
+import com.revature.model.Employee;
+import com.revature.model.ReimbTicket;
+import com.revature.service.RevSearchService;
+
+public class RevSearchServiceImpl implements RevSearchService {
+	
+	private static final Logger log = LogManager.getLogger(RevSearchServiceImpl.class); 
+	
+	RevSearchDAO revSearchDAO = new RevSearchDAOImpl();
+
+//	@Override
+//	public Employee getEmployee(String username) throws BusinessException {
+//		
+//		Employee employee = null;
+//		
+//		log.debug("In Service. About to enter DAO");
+//		
+//		if (username.length() > 0) {
+//			employee =  revSearchDAO.getUserByUsername(username);
+//		} else {
+//			return employee;
+//		}
+//		
+//		return employee;
+//		
+//	}
+	
+	@Override
+	public Employee login(String username, String password) throws BusinessException {
+		
+		//String verifiedUsername = revSearchDAO.getUsernameByUsernameAndPassword(username, password);
+		
+
+		Employee employee = revSearchDAO.getUserByUsernameAndPassword(username, password);
+
+		return employee;
+	}
+	
+	@Override
+	public List<ReimbTicket> getUserTickets(int userId) throws BusinessException {
+		
+		List<ReimbTicket> userTicketList = new ArrayList<>();
+		
+		userTicketList = revSearchDAO.getTicketsByUserId(userId);
+		
+		return null;
+		
+	}
+
+}
