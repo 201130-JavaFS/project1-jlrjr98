@@ -21,6 +21,11 @@ public class TicketDTO {
 		this.reimbTypeId = reimbTypeId;
 	}
 
+	public TicketDTO(int userId) {
+		super();
+		this.userId = userId;
+	}
+
 	
 	
 }

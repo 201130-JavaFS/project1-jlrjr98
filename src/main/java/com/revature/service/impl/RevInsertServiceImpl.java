@@ -19,9 +19,14 @@ public class RevInsertServiceImpl implements RevInsertService{
 	@Override
 	public boolean createTicket(int userId, BigDecimal reimbAmount, String reimbDescription, int reimbTypeId) throws BusinessException {
 		
+		ReimbTicket reimbTicket = null;
 		
-		
-		ReimbTicket reimbTicket = new ReimbTicket(reimbAmount, new Date(), reimbDescription, userId, 1, reimbTypeId);
+		if (reimbAmount.floatValue() > 0.00) {
+			
+			reimbTicket = new ReimbTicket(reimbAmount, new Date(), reimbDescription, userId, 1, reimbTypeId);
+		} else {
+			throw new BusinessException();
+		}
 		
 		
 		return revInsertDAO.insertTicket(reimbTicket);

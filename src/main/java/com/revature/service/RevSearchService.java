@@ -11,5 +11,6 @@ public interface RevSearchService {
 //	public Employee getEmployee(String username) throws BusinessException;
 	public Employee login(String username, String password) throws BusinessException;
 	public List<ReimbTicket> getUserTickets(int userId) throws BusinessException;
+	public List<ReimbTicket> getAllTickets(int userId) throws BusinessException;
 
 }

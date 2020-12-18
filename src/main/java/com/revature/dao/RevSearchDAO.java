@@ -12,4 +12,5 @@ public interface RevSearchDAO {
 //	public String getUsernameByUsernameAndPassword(String username, String password) throws BusinessException;
 	public List<ReimbTicket> getTicketsByUserId(int userId) throws BusinessException;
 	public Employee getUserByUsernameAndPassword(String username, String password) throws BusinessException;
+	public List<ReimbTicket> getAllTicketsExceptById(int userId) throws BusinessException;
 }

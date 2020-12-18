@@ -26,7 +26,7 @@ public class LoginController {
 
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, BusinessException {
 		
-		log.debug("in LoginController login");
+		log.info("in LoginController login");
 		
 		if (req.getMethod().equals("POST")) {
 			
@@ -49,7 +49,7 @@ public class LoginController {
 			
 			if (employee != null) {
 				
-				log.debug("Exiting Service");
+				log.info("Exiting Service");
 				
 				HttpSession httpSession = req.getSession();
 				

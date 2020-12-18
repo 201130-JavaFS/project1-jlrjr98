@@ -3,7 +3,7 @@ package com.revature.model;
 public class Employee {
 	
 	private int userId;
-	private String userName;
+	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
@@ -16,9 +16,9 @@ public class Employee {
 	}
 	
 	//to display post-login
-//	public Employee(String userName, String firstName, String lastName, String email, String userRole) {
+//	public Employee(String username, String firstName, String lastName, String email, String userRole) {
 //		super();
-//		this.userName = userName;
+//		this.username = username;
 //		this.firstName = firstName;
 //		this.lastName = lastName;
 //		this.email = email;
@@ -26,11 +26,11 @@ public class Employee {
 //	}
 
 	
-	public Employee(int userId, String userName, String firstName, String lastName, String email, int userRoleId,
+	public Employee(int userId, String username, String firstName, String lastName, String email, int userRoleId,
 			String userRole) {
 		super();
 		this.userId = userId;
-		this.userName = userName;
+		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -39,11 +39,11 @@ public class Employee {
 	}
 
 	//to create employee
-//	public Employee(int userId, String userName, String password, String firstName, String lastName, String email,
+//	public Employee(int userId, String username, String password, String firstName, String lastName, String email,
 //			int userRoleId, String userRole) {
 //		super();
 //		this.userId = userId;
-//		this.userName = userName;
+//		this.username = username;
 //		this.password = password;
 //		this.firstName = firstName;
 //		this.lastName = lastName;
@@ -69,12 +69,12 @@ public class Employee {
 		this.userId = userId;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -126,7 +126,7 @@ public class Employee {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + userId;
-		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		result = prime * result + userRoleId;
 		return result;
@@ -163,10 +163,10 @@ public class Employee {
 			return false;
 		if (userId != other.userId)
 			return false;
-		if (userName == null) {
-			if (other.userName != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!userName.equals(other.userName))
+		} else if (!username.equals(other.username))
 			return false;
 		if (userRole == null) {
 			if (other.userRole != null)
@@ -180,7 +180,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+		return "Employee [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", userRole=" + userRole + "]";
 	}
 

@@ -50,12 +50,22 @@ public class RevSearchServiceImpl implements RevSearchService {
 	@Override
 	public List<ReimbTicket> getUserTickets(int userId) throws BusinessException {
 		
-		List<ReimbTicket> userTicketList = new ArrayList<>();
+		List<ReimbTicket> userTicketList = null;
 		
 		userTicketList = revSearchDAO.getTicketsByUserId(userId);
 		
-		return null;
+		return userTicketList;
 		
+	}
+
+	@Override
+	public List<ReimbTicket> getAllTickets(int userId) throws BusinessException {
+		
+		List<ReimbTicket> listOfAllTickets = null;
+		
+		listOfAllTickets = revSearchDAO.getAllTicketsExceptById(userId);
+		
+		return listOfAllTickets;
 	}
 
 }

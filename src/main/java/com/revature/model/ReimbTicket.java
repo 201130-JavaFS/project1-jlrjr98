@@ -20,6 +20,8 @@ public class ReimbTicket {
 	private String reimbType;
 	
 	
+	private String reimbSubmittedString;
+	private String reimbResolvedString;
 	
 	public ReimbTicket() {
 		super();
@@ -68,6 +70,24 @@ public class ReimbTicket {
 		this.reimbAmount = reimbAmount;
 		this.reimbSubmitted = reimbSubmitted;
 		this.reimbResolved = reimbResolved;
+		this.reimbDescription = reimbDescription;
+		this.reimbReciept = reimbReciept;
+		this.reimbAuthor = reimbAuthor;
+		this.reimbResolver = reimbResolver;
+		this.reimbStatusId = reimbStatusId;
+		this.reimbStatus = reimbStatus;
+		this.reimbTypeId = reimbTypeId;
+		this.reimbType = reimbType;
+	}
+	
+	public ReimbTicket(int reimbId, BigDecimal reimbAmount, String reimbSubmittedString, String reimbResolvedString,
+			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId,
+			String reimbStatus, int reimbTypeId, String reimbType) {
+		super();
+		this.reimbId = reimbId;
+		this.reimbAmount = reimbAmount;
+		this.reimbSubmittedString = reimbSubmittedString;
+		this.reimbResolvedString = reimbResolvedString;
 		this.reimbDescription = reimbDescription;
 		this.reimbReciept = reimbReciept;
 		this.reimbAuthor = reimbAuthor;
@@ -220,6 +240,30 @@ public class ReimbTicket {
 
 	public void setReimbType(String reimbType) {
 		this.reimbType = reimbType;
+	}
+
+
+
+	public String getReimbSubmittedString() {
+		return reimbSubmittedString;
+	}
+
+
+
+	public void setReimbSubmittedString(String reimbSubmittedString) {
+		this.reimbSubmittedString = reimbSubmittedString;
+	}
+
+
+
+	public String getReimbResolvedString() {
+		return reimbResolvedString;
+	}
+
+
+
+	public void setReimbResolvedString(String reimbResolvedString) {
+		this.reimbResolvedString = reimbResolvedString;
 	}
 
 

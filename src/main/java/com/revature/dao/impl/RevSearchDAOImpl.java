@@ -53,7 +53,7 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 						resultSet.getString("user_role"));
 			}
 			
-			if (username.equals(employee.getUserName())) {
+			if (username.equals(employee.getUsername())) {
 				return employee;
 			}
 			
@@ -113,15 +113,17 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 				ReimbTicket reimbTicket = new ReimbTicket(
 						resultSet.getInt("reimb_id"),
 						resultSet.getBigDecimal("reimb_amount"),
-						resultSet.getDate("reimb_submitted"),
-						resultSet.getDate("reimb_resolved"),
+//						resultSet.getTimestamp("reimb_submitted"),
+//						resultSet.getTimestamp("reimb_resolved"),
+						resultSet.getString("reimb_submitted"),
+						resultSet.getString("reimb_resolved"),
 						resultSet.getString("reimb_description"),
 						resultSet.getBlob("reimb_reciept"),
 						resultSet.getInt("reimb_author"),
 						resultSet.getInt("reimb_resolver"),
-						resultSet.getInt("ers_reimbursement.reimb_status_id"),
+						resultSet.getInt("reimb_status_id"),
 						resultSet.getString("reimb_status"),
-						resultSet.getInt("ers_reimbursement.reimb_type_id"),
+						resultSet.getInt("reimb_type_id"),
 						resultSet.getString("reimb_type"));
 				
 				userTicketList.add(reimbTicket);
@@ -136,4 +138,45 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 		return null;
 	}
 
+	@Override
+	public List<ReimbTicket> getAllTicketsExceptById(int userId) throws BusinessException {
+		
+		try (Connection connection = RevConnection.getConnection()) {
+			
+			String sql = RevSearchQueries.GET_ALL_TICKETS_EXCEPT_BY_USER_ID;
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			List<ReimbTicket> listOfAllTickets = new ArrayList<>();
+			
+			while (resultSet.next()) {
+				ReimbTicket reimbTicket;
+					reimbTicket = new ReimbTicket(
+							resultSet.getInt("reimb_id"),
+							resultSet.getBigDecimal("reimb_amount"),
+							resultSet.getString("reimb_submitted"),
+							resultSet.getString("reimb_resolved"),
+							resultSet.getString("reimb_description"),
+							resultSet.getBlob("reimb_reciept"),
+							resultSet.getInt("reimb_author"),
+							resultSet.getInt("reimb_resolver"),
+							resultSet.getInt("reimb_status_id"),
+							resultSet.getString("reimb_status"),
+							resultSet.getInt("reimb_type_id"),
+							resultSet.getString("reimb_type"));
+					
+					listOfAllTickets.add(reimbTicket);
+					
+			}
+			
+			return listOfAllTickets;
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}		
+
+		return null;
+	}
 }
