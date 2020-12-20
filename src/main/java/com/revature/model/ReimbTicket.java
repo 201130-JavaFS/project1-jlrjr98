@@ -26,10 +26,7 @@ public class ReimbTicket {
 	public ReimbTicket() {
 		super();
 	}
-
 	
-	
-	//create ticket service
 	public ReimbTicket(BigDecimal reimbAmount, Date reimbSubmitted, String reimbDescription, int reimbAuthor,
 			int reimbStatusId, int reimbTypeId) {
 		super();
@@ -41,13 +38,13 @@ public class ReimbTicket {
 		this.reimbTypeId = reimbTypeId;
 	}
 
-
-
-
-	//create ticket DAO //not needed?
-//	public ReimbTicket(BigDecimal reimbAmount, Date reimbSubmitted, Date reimbResolved, String reimbDescription,
-//			Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId, int reimbTypeId) {
+	
+	//given when employee requests tickets
+//	public ReimbTicket(int reimbId, BigDecimal reimbAmount, Date reimbSubmitted, Date reimbResolved,
+//			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId,
+//			String reimbStatus, int reimbTypeId, String reimbType) {
 //		super();
+//		this.reimbId = reimbId;
 //		this.reimbAmount = reimbAmount;
 //		this.reimbSubmitted = reimbSubmitted;
 //		this.reimbResolved = reimbResolved;
@@ -56,29 +53,10 @@ public class ReimbTicket {
 //		this.reimbAuthor = reimbAuthor;
 //		this.reimbResolver = reimbResolver;
 //		this.reimbStatusId = reimbStatusId;
+//		this.reimbStatus = reimbStatus;
 //		this.reimbTypeId = reimbTypeId;
+//		this.reimbType = reimbType;
 //	}
-
-
-	
-	//given when employee requests tickets
-	public ReimbTicket(int reimbId, BigDecimal reimbAmount, Date reimbSubmitted, Date reimbResolved,
-			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId,
-			String reimbStatus, int reimbTypeId, String reimbType) {
-		super();
-		this.reimbId = reimbId;
-		this.reimbAmount = reimbAmount;
-		this.reimbSubmitted = reimbSubmitted;
-		this.reimbResolved = reimbResolved;
-		this.reimbDescription = reimbDescription;
-		this.reimbReciept = reimbReciept;
-		this.reimbAuthor = reimbAuthor;
-		this.reimbResolver = reimbResolver;
-		this.reimbStatusId = reimbStatusId;
-		this.reimbStatus = reimbStatus;
-		this.reimbTypeId = reimbTypeId;
-		this.reimbType = reimbType;
-	}
 	
 	public ReimbTicket(int reimbId, BigDecimal reimbAmount, String reimbSubmittedString, String reimbResolvedString,
 			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId,
@@ -97,7 +75,6 @@ public class ReimbTicket {
 		this.reimbTypeId = reimbTypeId;
 		this.reimbType = reimbType;
 	}
-
 
 
 	public int getReimbId() {

@@ -8,6 +8,10 @@ public class TicketDTO {
 	public BigDecimal reimbAmount;
 	public String reimbDescription;
 	public int reimbTypeId;
+	
+	public int reimbId;
+	public int reimbStatusId;
+	public int reimbResolver;
 
 	public TicketDTO() {
 		super();
@@ -21,11 +25,15 @@ public class TicketDTO {
 		this.reimbTypeId = reimbTypeId;
 	}
 
+	public TicketDTO(int reimbId, int reimbStatusId, int reimbResolver) {
+		super();
+		this.reimbId = reimbId;
+		this.reimbStatusId = reimbStatusId;
+		this.reimbResolver = reimbResolver;
+	}
+
 	public TicketDTO(int userId) {
 		super();
 		this.userId = userId;
 	}
-
-	
-	
 }

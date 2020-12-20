@@ -158,6 +158,10 @@ span {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    /* background-color: lightblue; */
+    border-width: 10px;
+    border-style: solid;
+    border-color: #6B7A8F;
   }
   
   /* The actual popup */
@@ -191,8 +195,8 @@ span {
   /* Toggle this class - hide and show the popup */
   .popup .show {
     visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+    /* -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s; */
   }
   
   /* Add animation (fade in the popup) */

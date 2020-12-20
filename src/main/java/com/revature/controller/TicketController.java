@@ -17,14 +17,17 @@ import com.revature.model.ReimbTicket;
 import com.revature.model.DTO.TicketDTO;
 import com.revature.service.RevInsertService;
 import com.revature.service.RevSearchService;
+import com.revature.service.RevUpdateService;
 import com.revature.service.impl.RevInsertServiceImpl;
 import com.revature.service.impl.RevSearchServiceImpl;
+import com.revature.service.impl.RevUpdateServiceImpl;
 
 public class TicketController {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private RevSearchService revSearchService = new RevSearchServiceImpl();
 	private RevInsertService revInsertService = new RevInsertServiceImpl();
+	private RevUpdateService revUpdateService = new RevUpdateServiceImpl();
 
 	private static final Logger log = LogManager.getLogger(TicketController.class); 
 	
@@ -131,8 +134,8 @@ public class TicketController {
 			
 			
 			while (line != null) {
-			bodyBuilder.append(line);
-			line = bufferedReader.readLine();
+				bodyBuilder.append(line);
+				line = bufferedReader.readLine();
 			}
 			String body = new String(bodyBuilder);
 			TicketDTO ticketDTO = objectMapper.readValue(body, TicketDTO.class);
@@ -173,10 +176,38 @@ public class TicketController {
 				}
 			}
 			
-			
 		} else {
 			
 			res.setStatus(404);
+		}
+		
+	}
+
+	public void sendReview(HttpServletRequest req, HttpServletResponse res) throws IOException, BusinessException {
+
+		if (req.getMethod().equals("PATCH")) {
+			
+			BufferedReader bufferedReader = req.getReader();
+			StringBuilder bodyBuilder = new StringBuilder();
+			String line = bufferedReader.readLine();
+			
+			
+			while (line != null) {
+				bodyBuilder.append(line);
+				line = bufferedReader.readLine();
+			}
+			String body = new String(bodyBuilder);
+			TicketDTO ticketDTO = objectMapper.readValue(body, TicketDTO.class);
+			
+			if (revUpdateService.sendReview(ticketDTO.reimbId, ticketDTO.reimbStatusId, ticketDTO.reimbResolver)) {		
+				
+				HttpSession httpSession = req.getSession();
+				httpSession.setAttribute("acquiredAllTickets", true);
+				
+				res.setStatus(200);
+				
+			}
+			
 		}
 		
 	}

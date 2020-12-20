@@ -108,6 +108,15 @@ public class MasterServlet extends HttpServlet {
 				}
 					
 					break;
+			case "send-review":
+				
+			try {
+				ticketController.sendReview(req, res);
+			} catch (IOException | BusinessException e1) {
+				e1.printStackTrace();
+			}
+				
+				break;
 			
 			case "signout": 
 				
@@ -129,8 +138,13 @@ public class MasterServlet extends HttpServlet {
 					
 				break;
 				
+			case "create-ticket-page":
+				
+				res.setStatus(200);
+				
+				break;
+				
 			default:
-				res.setStatus(404);
 				break;
 		}
 		
@@ -143,7 +157,20 @@ public class MasterServlet extends HttpServlet {
 		
 		doGet(req, res);
 		
-		
 	}
+     
+    public void doPatch(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+ 
+    	doGet(req, res);
+    }
 
+	@Override
+	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        if (req.getMethod().equalsIgnoreCase("PATCH")){
+           doPatch(req, res);
+        } else {
+            super.service(req, res);
+        }
+    }
+    
 }

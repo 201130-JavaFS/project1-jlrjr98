@@ -15,17 +15,6 @@ public class Employee {
 		super();
 	}
 	
-	//to display post-login
-//	public Employee(String username, String firstName, String lastName, String email, String userRole) {
-//		super();
-//		this.username = username;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.userRole = userRole;
-//	}
-
-	
 	public Employee(int userId, String username, String firstName, String lastName, String email, int userRoleId,
 			String userRole) {
 		super();
@@ -37,20 +26,6 @@ public class Employee {
 		this.userRoleId = userRoleId;
 		this.userRole = userRole;
 	}
-
-	//to create employee
-//	public Employee(int userId, String username, String password, String firstName, String lastName, String email,
-//			int userRoleId, String userRole) {
-//		super();
-//		this.userId = userId;
-//		this.username = username;
-//		this.password = password;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.userRoleId = userRoleId;
-//		this.userRole = userRole;
-//	}
 
 
 	public String getUserRole() {

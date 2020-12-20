@@ -35,7 +35,7 @@ public class CorsFilter implements Filter {
 		//for other things, must filter for ip addresses
 		res.setHeader("Access-Control-Allow-Origin", "null"); // Allow all origins
 		
-		res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+		res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD");
 		// Allow specific HTTP Verbs
 		
 		res.setHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type,"

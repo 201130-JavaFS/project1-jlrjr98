@@ -25,12 +25,13 @@ public class RevInsertServiceImpl implements RevInsertService{
 			
 			reimbTicket = new ReimbTicket(reimbAmount, new Date(), reimbDescription, userId, 1, reimbTypeId);
 		} else {
-			throw new BusinessException();
+			throw new BusinessException("Reimbusement Amount less than 0.");
+			
 		}
-		
 		
 		return revInsertDAO.insertTicket(reimbTicket);
 		
 	}
+
 
 }

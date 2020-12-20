@@ -21,17 +21,12 @@ public class RevInsertDAOImpl implements RevInsertDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setBigDecimal(1, reimbTicket.getReimbAmount());
 			preparedStatement.setTimestamp(2, new java.sql.Timestamp(reimbTicket.getReimbSubmitted().getTime()));
-			//preparedStatement.setTimestamp(3, new java.sql.Timestamp(reimbTicket.getReimbResolved().getTime()));
 			preparedStatement.setString(3, reimbTicket.getReimbDescription());
-//			preparedStatement.setBlob(5, reimbTicket.getReimbReciept());
 			preparedStatement.setInt(4, reimbTicket.getReimbAuthor());
-//			preparedStatement.setInt(7, reimbTicket.getReimbResolver());
 			preparedStatement.setInt(5, reimbTicket.getReimbStatusId());
 			preparedStatement.setInt(6, reimbTicket.getReimbTypeId());
 			
 			preparedStatement.executeUpdate();
-			
-			
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -39,7 +34,6 @@ public class RevInsertDAOImpl implements RevInsertDAO {
 		}
 		
 		return true;
-		//maybe try to grab the ticket, return false if null
 	}
 
 }
