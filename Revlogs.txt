@@ -6067,3 +6067,77 @@ java.lang.NullPointerException: null
 2020-12-22 04:33:15 HST INFO  MasterServlet:33 - in doGet
 2020-12-22 04:33:15 HST DEBUG CorsFilter:22 - CORS Filter leveraged
 2020-12-22 04:33:15 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:17:44 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:17:44 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:17:59 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:17:59 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:17:59 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:17:59 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:17:59 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 08:17:59 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:18:12 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:18:12 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 08:18:12 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:18:12 HST DEBUG MasterServlet:57 - About to enter employee controller
+2020-12-22 08:18:34 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:18:34 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:18:35 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 08:18:35 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 08:50:22 HST ERROR RevSearchDAOImpl:60 - Runtime Error: 
+java.lang.NullPointerException: null
+	at com.revature.dao.impl.RevSearchDAOImpl.getUserByUsernameAndPassword(RevSearchDAOImpl.java:54) ~[classes/:?]
+	at com.revature.service.RevSearchService.login(RevSearchService.java:21) ~[classes/:?]
+	at com.revature.RevServiceImplTest.testIncorrectLogin(RevServiceImplTest.java:56) ~[test-classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_265]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_265]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_265]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_265]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:628) ~[junit-platform-commons-1.4.2.jar:1.4.2]
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:117) ~[junit-jupiter-engine-5.4.2.jar:5.4.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:184) ~[junit-jupiter-engine-5.4.2.jar:5.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:180) ~[junit-jupiter-engine-5.4.2.jar:5.4.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:127) ~[junit-jupiter-engine-5.4.2.jar:5.4.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.4.2.jar:5.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1259) ~[?:1.8.0_265]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1259) ~[?:1.8.0_265]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.4.2.jar:1.4.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229) ~[junit-platform-launcher-1.4.2.jar:1.4.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197) ~[junit-platform-launcher-1.4.2.jar:1.4.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211) [junit-platform-launcher-1.4.2.jar:1.4.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191) [junit-platform-launcher-1.4.2.jar:1.4.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137) [junit-platform-launcher-1.4.2.jar:1.4.2]
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:542) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:770) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:464) [.cp/:?]
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210) [.cp/:?]

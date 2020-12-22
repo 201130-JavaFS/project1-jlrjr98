@@ -46,6 +46,20 @@ class RevServiceImplTest {
 
 		assertEquals(true, b);
 	}
+	
+	@Test
+	void testIncorrectLogin(Server server, Server server1) throws BusinessException {
+
+		String username = "1punchman";
+		String password = "aa0b1dc6742f99e2b7e3d";
+
+		Employee actual = revSearchService.login(username, password);
+		Employee notExpected = new Employee(2, "1punchman", "Sai", "Tama", "hero4fun@gmail.com", 2, "Trainer");
+
+		boolean b = notExpected.equals(actual);
+
+		assertEquals(false, b);
+	}
 
 	@Test
 	void testGetUserTickets(Server server) throws BusinessException {
@@ -63,9 +77,6 @@ class RevServiceImplTest {
 		ReimbTicket reimbTicket = new ReimbTicket(6, reimbAmount, "2020-12-17 16:39:43", reimbResolvedString,
 				"Laser eye implant", reimbReciept, 1, reimbResolver, "pending", "Other");
 		expected.add(reimbTicket);
-		
-		System.out.println(actual);
-		System.out.println(expected);
 
 		boolean b = expected.equals(actual);
 

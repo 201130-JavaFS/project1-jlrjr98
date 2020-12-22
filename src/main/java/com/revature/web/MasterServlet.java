@@ -42,7 +42,6 @@ public class MasterServlet extends HttpServlet {
 			case "login": 
 				
 				try {
-					
 					loginController.login(req, res);
 				} catch (IOException | BusinessException e) {
 					e.printStackTrace();
@@ -53,9 +52,7 @@ public class MasterServlet extends HttpServlet {
 			
 			case "view-tickets": 
 				
-				try {
-					log.debug("About to enter employee controller");
-					
+				try {					
 					ticketController.getUserTickets(req, res);
 				} catch (IOException | BusinessException e) {
 					e.printStackTrace();
