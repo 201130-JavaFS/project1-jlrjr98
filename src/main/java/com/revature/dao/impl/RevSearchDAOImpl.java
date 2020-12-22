@@ -26,8 +26,6 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 		
 		Employee employee = null;
 		
-		log.debug("In DAO. About to Enter Database.");
-		
 		
 		try (Connection connection = RevConnection.getConnection()) {
 			
@@ -89,9 +87,7 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 						resultSet.getBlob("reimb_reciept"),
 						resultSet.getInt("reimb_author"),
 						resultSet.getInt("reimb_resolver"),
-						//resultSet.getInt("reimb_status_id"),
 						resultSet.getString("reimb_status"),
-						//resultSet.getInt("reimb_type_id"),
 						resultSet.getString("reimb_type"));
 				
 				userTicketList.add(reimbTicket);
@@ -131,9 +127,7 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 							resultSet.getBlob("reimb_reciept"),
 							resultSet.getInt("reimb_author"),
 							resultSet.getInt("reimb_resolver"),
-							//resultSet.getInt("reimb_status_id"),
 							resultSet.getString("reimb_status"),
-							//resultSet.getInt("reimb_type_id"),
 							resultSet.getString("reimb_type"));
 					
 					listOfAllTickets.add(reimbTicket);

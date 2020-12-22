@@ -41,11 +41,6 @@ function login() {
 				var passW = sessionStorage.getItem("password");
 				
 				start(userN, passW);
-			} else {
-				tab1.addEventListener('click', mustLoginFirst);
-				tab2.addEventListener('click', mustLoginFirst);
-				tab3.addEventListener('click', mustLoginFirst);
-				tab4.addEventListener('click', mustLoginFirst);
 			}
 
 		let username = document.getElementById("username").value;
@@ -536,7 +531,7 @@ async function reviewTickets(userData) {
 		let allOption = document.createElement("option");
 		let pendingOption = document.createElement("option");
 		let approvedOption = document.createElement("option");
-		let declinedOption = document.createElement("option");
+		let deniedOption = document.createElement("option");
 
 		allOption.innerHTML = "All";
 		allOption.setAttribute("value", "no filter");
@@ -544,8 +539,8 @@ async function reviewTickets(userData) {
 		pendingOption.setAttribute("value", "pending");
 		approvedOption.innerHTML = "approved";
 		approvedOption.setAttribute("value", "approved");
-		declinedOption.innerHTML = "declined";
-		declinedOption.setAttribute("value", "declined");
+		deniedOption.innerHTML = "denied";
+		deniedOption.setAttribute("value", "denied");
 
 		let statusSelectorBtn = document.createElement("button");
 		statusSelectorBtn.innerHTML = "Filter By Status";
@@ -554,7 +549,7 @@ async function reviewTickets(userData) {
 		statusSelector.appendChild(allOption);
 		statusSelector.appendChild(pendingOption);
 		statusSelector.appendChild(approvedOption);
-		statusSelector.appendChild(declinedOption);
+		statusSelector.appendChild(deniedOption);
 
 		selectorDiv.appendChild(statusSelector);
 		selectorDiv.appendChild(statusSelectorBtn);
@@ -573,6 +568,7 @@ async function reviewTickets(userData) {
 		headRow.setAttribute("id", "ticket-head-row");
 
 		let ticketHead1 = document.createElement("th");
+		let ticketHead0 = document.createElement("th");
 		let ticketHead2 = document.createElement("th");
 		let ticketHead3 = document.createElement("th");
 		let ticketHead4 = document.createElement("th");
@@ -584,6 +580,7 @@ async function reviewTickets(userData) {
 		let ticketHead10 = document.createElement("th");
 
 		headRow.appendChild(ticketHead1);
+		headRow.appendChild(ticketHead0);
 		headRow.appendChild(ticketHead2);
 		headRow.appendChild(ticketHead3);
 		headRow.appendChild(ticketHead4);
@@ -595,6 +592,7 @@ async function reviewTickets(userData) {
 		headRow.appendChild(ticketHead10);
 
 		ticketHead1.innerHTML = "Ticket Id";
+		ticketHead0.innerHTML = "Author Id";
 		ticketHead2.innerHTML = "Amount";
 		ticketHead3.innerHTML = "Date Submitted";
 		ticketHead4.innerHTML = "Date Resolved";
@@ -633,6 +631,10 @@ async function reviewTickets(userData) {
 					let cell = document.createElement("td");
 					cell.innerHTML = data[i].reimbId;
 					row.appendChild(cell);
+
+					let cell0 = document.createElement("td");
+					cell0.innerHTML = data[i].reimbAuthor;
+					row.appendChild(cell0);
 			
 					let cell2 = document.createElement("td");
 					cell2.innerHTML = "$" + data[i].reimbAmount.toFixed(2);
@@ -800,9 +802,6 @@ async function sendReview(i, reimbId, reimbResolver) {
 	}
 }
 
-function mustLoginFirst() {
-	mainHeader.innerHTML = "You Must First Login:"
-}
 function addDivToWarningDiv() {
 	let divForWarningDiv = document.createElement("div");
 	divForWarning.appendChild(divForWarningDiv);
