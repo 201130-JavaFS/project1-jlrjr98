@@ -8,8 +8,12 @@ public class ReimbTicket {
 	
 	private int reimbId;
 	private BigDecimal reimbAmount;
+	
 	private Date reimbSubmitted;
 	private Date reimbResolved;
+	private String reimbSubmittedString;
+	private String reimbResolvedString;
+	
 	private String reimbDescription;
 	private Blob reimbReciept;
 	private int reimbAuthor;
@@ -20,8 +24,7 @@ public class ReimbTicket {
 	private String reimbType;
 	
 	
-	private String reimbSubmittedString;
-	private String reimbResolvedString;
+
 	
 	public ReimbTicket() {
 		super();
@@ -37,30 +40,10 @@ public class ReimbTicket {
 		this.reimbStatusId = reimbStatusId;
 		this.reimbTypeId = reimbTypeId;
 	}
-
-	
-	//given when employee requests tickets
-//	public ReimbTicket(int reimbId, BigDecimal reimbAmount, Date reimbSubmitted, Date reimbResolved,
-//			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId,
-//			String reimbStatus, int reimbTypeId, String reimbType) {
-//		super();
-//		this.reimbId = reimbId;
-//		this.reimbAmount = reimbAmount;
-//		this.reimbSubmitted = reimbSubmitted;
-//		this.reimbResolved = reimbResolved;
-//		this.reimbDescription = reimbDescription;
-//		this.reimbReciept = reimbReciept;
-//		this.reimbAuthor = reimbAuthor;
-//		this.reimbResolver = reimbResolver;
-//		this.reimbStatusId = reimbStatusId;
-//		this.reimbStatus = reimbStatus;
-//		this.reimbTypeId = reimbTypeId;
-//		this.reimbType = reimbType;
-//	}
 	
 	public ReimbTicket(int reimbId, BigDecimal reimbAmount, String reimbSubmittedString, String reimbResolvedString,
-			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver, int reimbStatusId,
-			String reimbStatus, int reimbTypeId, String reimbType) {
+			String reimbDescription, Blob reimbReciept, int reimbAuthor, int reimbResolver,
+			String reimbStatus, String reimbType) {
 		super();
 		this.reimbId = reimbId;
 		this.reimbAmount = reimbAmount;
@@ -70,9 +53,7 @@ public class ReimbTicket {
 		this.reimbReciept = reimbReciept;
 		this.reimbAuthor = reimbAuthor;
 		this.reimbResolver = reimbResolver;
-		this.reimbStatusId = reimbStatusId;
 		this.reimbStatus = reimbStatus;
-		this.reimbTypeId = reimbTypeId;
 		this.reimbType = reimbType;
 	}
 

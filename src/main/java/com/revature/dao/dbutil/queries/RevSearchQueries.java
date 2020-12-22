@@ -2,12 +2,7 @@ package com.revature.dao.dbutil.queries;
 
 public class RevSearchQueries {
 
-//	public static final String GET_USER_BY_USERNAME = ""
-//			+ "SELECT ers_users_id, ers_username, user_first_name, user_last_name, user_email, user_role_id, user_role "
-//			+ "FROM ers.ers_users "
-//			+ "JOIN ers.ers_user_roles "
-//			+ "ON ers.ers_users.user_role_id = ers.ers_user_roles.ers_user_role_id "
-//			+ "WHERE ers_username = ?;";
+	private RevSearchQueries() {}
 	
 	public static final String GET_USER_BY_USERNAME_AND_PASSWORD = ""
 			+ "SELECT ers_users_id, ers_username, user_first_name, user_last_name, user_email, user_role_id, user_role "
@@ -30,12 +25,4 @@ public class RevSearchQueries {
 			+ "INNER JOIN ers.ers_reimbursement_type ON ers_reimbursement.reimb_type_id = ers_reimbursement_type.reimb_type_id "
 			+ "WHERE reimb_author != ?;";
 	
-	
-	//ers_reimbursement.reimb_author
-	
-	//getReimbTickets
-	
-	//getReimbRequests
-	//getReimbRequestsByStatus //view pending
-
 }

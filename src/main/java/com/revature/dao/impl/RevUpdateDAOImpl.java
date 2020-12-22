@@ -5,18 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.dao.RevUpdateDAO;
 import com.revature.dao.dbutil.RevConnection;
 import com.revature.dao.dbutil.queries.RevUpdateQueries;
 import com.revature.exception.BusinessException;
-import com.revature.model.ReimbTicket;
 
 public class RevUpdateDAOImpl implements RevUpdateDAO {
+	
+	private static final Logger log = LogManager.getLogger(RevUpdateDAOImpl.class); 
 
 	@Override
 	public boolean updateReimbStatusIdAndReimbResolverAndReimbResolvedByReimbId(int reimbId, int reimbStatusId, int reimbResolver, Date reimbResolved) throws BusinessException {
-
-		ReimbTicket reimbTicket = new ReimbTicket();
 		
 		try (Connection connection = RevConnection.getConnection()) {
 			
@@ -32,10 +34,10 @@ public class RevUpdateDAOImpl implements RevUpdateDAO {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			log.error("Runtime Error: ", e);
 			return false;
 		}
 		
 		return true;
 	}
-
 }

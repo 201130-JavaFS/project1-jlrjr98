@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.dao.RevInsertDAO;
 import com.revature.dao.dbutil.RevConnection;
 import com.revature.dao.dbutil.queries.RevInsertQueries;
@@ -12,8 +15,10 @@ import com.revature.model.ReimbTicket;
 
 public class RevInsertDAOImpl implements RevInsertDAO {
 	
+	private static final Logger log = LogManager.getLogger(RevInsertDAOImpl.class);
+	
 	@Override
-	public boolean insertTicket(ReimbTicket reimbTicket) throws BusinessException {
+	public boolean insertTicket(ReimbTicket reimbTicket) throws BusinessException {		
 		
 		try (Connection connection = RevConnection.getConnection()) {
 			
@@ -30,6 +35,8 @@ public class RevInsertDAOImpl implements RevInsertDAO {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			log.error("Runtime Error: ", e);
+			
 			return false;
 		}
 		

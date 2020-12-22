@@ -26,27 +26,18 @@ public class CorsFilter implements Filter {
 			return;
 		}
 		
-		// Cast the response as an HttpServletResponse
-		// Which is important, because we are going to set
-		// headers, which is specific to HTTP
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		//filtering for null because running html from computer
-		//for other things, must filter for ip addresses
-		res.setHeader("Access-Control-Allow-Origin", "null"); // Allow all origins
+		res.setHeader("Access-Control-Allow-Origin", "null");
 		
 		res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD");
-		// Allow specific HTTP Verbs
 		
 		res.setHeader("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type,"
 				+ "Access-Control-Request-Method, Access-Control-Request-Headers");
-		// Allow specific HTTP Headers (there's a fair few)
 		
 		res.setHeader("Access-Control-Allow-Credentials", "true");
-		// Credentials are allowed
 		
 		chain.doFilter(request, response);
-		// Continue the filter chain
 	}
 
 }

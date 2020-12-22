@@ -7,26 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.exception.BusinessException;
 import com.revature.model.Employee;
 import com.revature.model.DTO.LoginDTO;
+import com.revature.security.Encrypt;
 import com.revature.service.RevSearchService;
-import com.revature.service.impl.RevSearchServiceImpl;
 
 public class LoginController {
 	
-	private static final Logger log = LogManager.getLogger(LoginController.class); 
-	
 	private ObjectMapper objectMapper = new ObjectMapper();
-	private RevSearchService revSearchService = new RevSearchServiceImpl();
+	private RevSearchService revSearchService = new RevSearchService();
 
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException, BusinessException {
-		
-		log.info("in LoginController login");
 		
 		if (req.getMethod().equals("POST")) {
 			
@@ -43,13 +36,12 @@ public class LoginController {
 			String body = new String(bodyBuilder);
 			LoginDTO loginDTO = objectMapper.readValue(body, LoginDTO.class);
 			
-			log.debug("About to Enter Service");
 			
-			Employee employee = revSearchService.login(loginDTO.username, loginDTO.password);
+			String encryptedPassword = Encrypt.encryptPassword(loginDTO.password);
+			
+			Employee employee = revSearchService.login(loginDTO.username, encryptedPassword);
 			
 			if (employee != null) {
-				
-				log.info("Exiting Service");
 				
 				HttpSession httpSession = req.getSession();
 				
@@ -58,9 +50,7 @@ public class LoginController {
 				
 				String json = objectMapper.writeValueAsString(employee);
 				res.getWriter().print(json);
-				
-				res.setStatus(202);
-				//res.getWriter().print("Loading Successful");		
+				res.setStatus(202);		
 				
 			} else {
 				HttpSession httpSession = req.getSession(false);
@@ -73,11 +63,6 @@ public class LoginController {
 				res.getWriter().print("Login Failed");
 				
 			}
-
-		} 
-		
+		} 	
 	}
-	
-	
-
 }

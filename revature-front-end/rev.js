@@ -2,7 +2,6 @@
 
 const url = 'http://localhost:8080/project-1/';
 
-//DOM
 let tableRow = document.getElementById("t-row");
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -22,104 +21,13 @@ let contentDiv = document.getElementById("content-div");
 let loginFormInner = document.getElementById("login-form-inner");
 let divForWarning = document.getElementById("div-for-warning");
 
-
-
-// async function checkIfLoggedIn() {
-// 	let response = await fetch(url+'check-session', {
-// 		method:'GET',
-// 		credentials:'include'
-// 	});
-// 	let textData = await response.text();
-// 	if (textData == "logged in") {
-// 		var userN = sessionStorage.getItem("username");
-// 		var passW = sessionStorage.getItem("password");
-// 		var page = sessionStorage.getItem("page");
-// 		start(userN, passW, page);
-		
-// 	} else {
-// 		tab1.addEventListener('click', mustLoginFirst);
-// 		tab2.addEventListener('click', mustLoginFirst);
-// 		tab3.addEventListener('click', mustLoginFirst);
-// 		tab4.addEventListener('click', mustLoginFirst);
-
-// 		let loginFormInner = document.createElement("div")
-// 		loginFormInner.setAttribute("id", "login-form-inner");
-// 		let loginBtnDiv = document.createElement("div");
-// 		loginBtnDiv.setAttribute("id", "login-btn-div");
-
-// 		contentDiv.appendChild(loginFormInner);
-// 		contentDiv.appendChild(loginBtnDiv);
-
-// 		let usernameDiv = document.createElement("div");
-// 		usernameDiv.setAttribute("id", "username-div");
-// 		let passwordDiv = document.createElement("div");
-// 		passwordDiv.setAttribute("id", "password-div");
-
-// 		loginFormInner.appendChild(usernameDiv);
-// 		loginFormInner.appendChild(passwordDiv);
-
-// 		let usernameLabel = document.createElement("p");
-// 		usernameLabel.innerHTML = "Username:";
-// 		let usernameInput = document.createElement("input");
-// 		usernameInput.setAttribute("class", "form-control hover");
-// 		usernameInput.setAttribute("type", "text");
-// 		usernameInput.setAttribute("id", "username");
-
-// 		usernameDiv.appendChild(usernameLabel);
-// 		usernameDiv.appendChild(usernameInput);
-
-// 		let passwordLabel = document.createElement("p");
-// 		passwordLabel.innerHTML = "Password:";
-// 		let passwordInput = document.createElement("input");
-// 		passwordInput.setAttribute("class", "form-control hover");
-// 		passwordInput.setAttribute("type", "password");
-// 		passwordInput.setAttribute("id", "password");
-
-// 		passwordDiv.appendChild(passwordLabel);
-// 		passwordDiv.appendChild(passwordInput);
-
-// 		let loginBtn = document.createElement("button");
-// 		loginBtn.setAttribute("class", "btn btn-primary hover");
-// 		loginBtn.setAttribute("id", "login-btn");
-// 		loginBtn.innerHTML = "Login";
-
-// 		loginBtnDiv.appendChild(loginBtn);
-
-// 		loginBtn.addEventListener('click', login());
-
-// 		tab1.addEventListener('click', mustLoginFirst);
-// 		tab2.addEventListener('click', mustLoginFirst);
-// 		tab3.addEventListener('click', mustLoginFirst);
-// 		tab4.addEventListener('click', mustLoginFirst);
-
-		
-// 	}
-
-// }
-// if (performance.type == performance.TYPE_RELOAD) {
-// 	// overlayOn();
-// 	login();
-// }
-
-// function overlayOn() {
-// 	document.getElementById("overlay").style.display = "block";
-// }
-// function overlayOff() {
-// 	document.getElementById("overlay").style.display = "none";
-// }
-
 login();
 
 loginBtn.addEventListener('click', async function () {login();});
-loginBtn.addEventListener('click', async function () {bump();});
-
+loginBtn.addEventListener('click', async function () {addDivToWarningDiv();});
 
 function login() {
-	let unhashedPassword = document.getElementById("password").value;
-	let hashed = sha256(unhashedPassword);
 
-	hashed.then(function(result) {
-		console.log(result);
 		checkIfLoggedIn();
 
 		async function checkIfLoggedIn() {
@@ -131,32 +39,28 @@ function login() {
 			if (textData == "logged in") {
 				var userN = sessionStorage.getItem("username");
 				var passW = sessionStorage.getItem("password");
-				var page = sessionStorage.getItem("page");
-				start(userN, passW, page);
+				
+				start(userN, passW);
 			} else {
-				// overlayOff();
 				tab1.addEventListener('click', mustLoginFirst);
 				tab2.addEventListener('click', mustLoginFirst);
 				tab3.addEventListener('click', mustLoginFirst);
 				tab4.addEventListener('click', mustLoginFirst);
-		}
+			}
 
 		let username = document.getElementById("username").value;
-		let password = result;
-		page = null;
+		let password = document.getElementById("password").value;
 
-		if (password != 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855') {
-			start(username, password, page);
+		if (password && username) {
+			start(username, password);
 		} else if (divForWarning.childElementCount === 1) {
-			// let invalidPara = getInvalidPara();
-			// divForWarning.appendChild(invalidPara);
-
 			let invalidPara = document.createElement("p");
+			invalidPara.setAttribute("id", "invalid-para");
 			invalidPara.innerHTML = "Invalid Username or Password";
 			divForWarning.appendChild(invalidPara);
 		}
 
-		async function start(username, password, page) {
+		async function start(username, password) {
 
 			let userInfo = {
 				username:username,
@@ -177,7 +81,9 @@ function login() {
 				sessionStorage.setItem("username", username);
 				sessionStorage.setItem("password", password);
 
-				divForWarning.remove();
+				if (document.getElementById("invalid-para") != null) {
+					document.getElementById("invalid-para").remove();
+				}
 
 				let textData = await response.text()
 				let data = JSON.parse(textData);
@@ -201,53 +107,24 @@ function login() {
 					tab4.addEventListener('click', signout);
 				}
 
-				home(data, page);
+				home(data);
 				tab1.addEventListener('click', function () {home(data);});
 				tab2.addEventListener('click', function () {viewTickets(data["userId"]);});
-				tab3.addEventListener('click', function () {createTicketPage(data);});
+				let createdTicket = false;
+				tab3.addEventListener('click', function () {createTicketPage(data, createdTicket);});
 		
 			} else if (divForWarning.childElementCount === 1) {
-				// let invalidPara = getInvalidPara();
-				// divForWarning.appendChild(invalidPara);
-
 				let invalidPara = document.createElement("p");
+				invalidPara.setAttribute("id", "invalid-para");
 				invalidPara.innerHTML = "Invalid Username or Password";
 				divForWarning.appendChild(invalidPara);
+				}
 			}
-		}
-	}
-		});		
+		}	
 }
 
-function bump() {
-	let bump = document.createElement("div");
-	divForWarning.appendChild(bump);
-}
+async function home(data) {
 
-async function home(data, page) {
-	
-	console.log(page);
-	if (page != null) {
-		if (page == "viewTickets") {
-			viewTickets(data["userId"]);
-		} else if (page == "reviewTickets") {
-			reviewTickets(data);
-		} else if (page == "createTicketPage") {
-			createTicketPage(data);
-		} else {
-			sessionStorage.setItem("page", "home");
-		}
-	}
-	//this.data = data;
-
-	// let response = await fetch(url+'home', {
-	// 	method:'POST',
-	// 	body:JSON.stringify(username),
-	// 	credentials:'include'
-	// });
-
-	// let textData = await response.text()
-	// let data = JSON.parse(textData);
 	tab1.className = "current-tab";
 	tab2.className = "";
 	tab3.className = "";
@@ -256,21 +133,23 @@ async function home(data, page) {
 	if (tab5 != null) {
 		tab5.className = "";
 	}
-	
 
 	mainHeader.innerHTML = "Employee Information:";
-	whipeMain();
+	document.getElementById("content-div").remove();
 	let contentDiv = document.createElement("div");
 	contentDiv.setAttribute("id", "content-div");
 	mainDiv.appendChild(contentDiv);
 
 	let employeeTable = document.createElement("table");
 	employeeTable.setAttribute("id", "employee-table");
-	let employeeRow1 = document.createElement("tr")
-	let employeeRow2 = document.createElement("tr")
-	let employeeRow3 = document.createElement("tr")
-	let employeeRow4 = document.createElement("tr")
+	let employeeRow0 = document.createElement("tr");
+	let employeeRow1 = document.createElement("tr");
+	let employeeRow2 = document.createElement("tr");
+	let employeeRow3 = document.createElement("tr");
+	let employeeRow4 = document.createElement("tr");
 
+	let employeeHead0 = document.createElement("th");
+	let employeeCell0 = document.createElement("td");
 	let employeeHead1 = document.createElement("th");
 	let employeeCell1 = document.createElement("td");
 	let employeeHead2 = document.createElement("th");
@@ -280,11 +159,14 @@ async function home(data, page) {
 	let employeeHead4 = document.createElement("th");
 	let employeeCell4 = document.createElement("td");
 
+	employeeTable.appendChild(employeeRow0);
 	employeeTable.appendChild(employeeRow1);
 	employeeTable.appendChild(employeeRow2);
 	employeeTable.appendChild(employeeRow3);
 	employeeTable.appendChild(employeeRow4);
 
+	employeeRow0.appendChild(employeeHead0);
+	employeeRow0.appendChild(employeeCell0);
 	employeeRow1.appendChild(employeeHead1);
 	employeeRow1.appendChild(employeeCell1);
 	employeeRow2.appendChild(employeeHead2);
@@ -294,47 +176,176 @@ async function home(data, page) {
 	employeeRow4.appendChild(employeeHead4);
 	employeeRow4.appendChild(employeeCell4);
 
+	employeeHead0.innerHTML = "Employee Id: ";
 	employeeHead1.innerHTML = "Username: ";
 	employeeHead2.innerHTML = "Full Name: ";
 	employeeHead3.innerHTML = "Email: ";
 	employeeHead4.innerHTML = "Job Title: ";
 
+	employeeCell0.innerHTML = data["userId"];
 	employeeCell1.innerHTML = data["username"];
 	employeeCell2.innerHTML = data["firstName"] + " " + data["lastName"];
 	employeeCell3.innerHTML = data["email"];
 	employeeCell4.innerHTML = data["userRole"];
 
 	contentDiv.appendChild(employeeTable);
-
-	// if (data["userId"] === 1) {
-
-	// 	tab4.innerHTML = "Review Tickets";
-	// 	tab4.id = "tab-2";
-
-	// 	let tab5 = document.createElement("th");
-	// 	tab5.setAttribute("id", "tab-5");
-	// 	tab5.innerHTML = "Sign Out";
-	// 	tableRow.appendChild(tab5);
-
-	// 	tab4.innerHTML = "Review Tickets";
-	// 	tab4.addEventListener('click', reviewTickets);
-	// } else {
-	// 	tab4.id = "signout-tab";
-	// 	tab4.innerHTML = "Sign Out";
-	// }
-
-	// tab2.addEventListener('click', viewTickets(data));
 }
 
+async function viewTickets(userId) {
 
-async function createTicketPage(data) {
-
-	let response = await fetch(url + 'create-ticket-page', {
-		method: 'GET',
-		credentials: 'include'
+	let response = await fetch(url+'view-tickets', {
+		method:'POST',
+		body:JSON.stringify(userId),
+		credentials:'include'
 	});
 
-	sessionStorage.setItem("page", "createTicketPage");
+	if (response.status == 202) {
+
+		let textData = await response.text()
+		let data = JSON.parse(textData);
+
+		tab1.className = "";
+		tab2.className = "current-tab";
+		tab3.className = "";
+		tab4.className = "";
+		if (tab5 != null) {
+			tab5.className = "";
+		}
+		mainHeader.innerHTML = "Your Reimbursement Tickets:";
+		document.getElementById("content-div").remove();
+		let contentDiv = document.createElement("div");
+		contentDiv.setAttribute("id", "content-div");
+		mainDiv.appendChild(contentDiv);
+
+		let ticketTable = document.createElement("table");
+		ticketTable.setAttribute("id", "ticket-table");
+		ticketTable.setAttribute("class", "table");
+
+		let headRow = document.createElement("tr");
+		headRow.setAttribute("id", "ticket-head-row");
+
+		let ticketHead1 = document.createElement("th");
+		let ticketHead2 = document.createElement("th");
+		let ticketHead3 = document.createElement("th");
+		let ticketHead4 = document.createElement("th");
+		let ticketHead5 = document.createElement("th");
+		let ticketHead6 = document.createElement("th");
+		let ticketHead7 = document.createElement("th");
+		let ticketHead8 = document.createElement("th");
+		let ticketHead9 = document.createElement("th");
+
+		headRow.appendChild(ticketHead1);
+		headRow.appendChild(ticketHead2);
+		headRow.appendChild(ticketHead3);
+		headRow.appendChild(ticketHead4);
+		headRow.appendChild(ticketHead5);
+		headRow.appendChild(ticketHead6);
+		headRow.appendChild(ticketHead7);
+		headRow.appendChild(ticketHead8);
+		headRow.appendChild(ticketHead9);
+
+		ticketHead1.innerHTML = "Ticket Id";
+		ticketHead2.innerHTML = "Amount";
+		ticketHead3.innerHTML = "Date Submitted";
+		ticketHead4.innerHTML = "Date Resolved";
+		ticketHead5.innerHTML = "Description";
+		ticketHead6.innerHTML = "Reciept";
+		ticketHead7.innerHTML = "Resolver Id";
+		ticketHead8.innerHTML = "Type";
+		ticketHead9.innerHTML = "Status";
+
+		let tableHead = document.createElement("thead");
+		tableHead.setAttribute("class", "thead-dark");
+
+		tableHead.appendChild(headRow);
+		ticketTable.appendChild(tableHead);
+
+		let tableBody = document.createElement("tbody");
+		
+		for (var i = 0; i < data.length; i++) {
+
+			let row = document.createElement("tr");
+			row.setAttribute("class", "ticket-body-row");
+	  
+			let cell = document.createElement("td");
+			cell.innerHTML = data[i].reimbId;
+			row.appendChild(cell);
+	  
+			let cell2 = document.createElement("td");
+			cell2.innerHTML = "$" + data[i].reimbAmount.toFixed(2);
+			row.appendChild(cell2);
+	  
+			let cell3 = document.createElement("td");
+			cell3.innerHTML = data[i].reimbSubmittedString;
+			row.appendChild(cell3);
+	  
+			let cell4 = document.createElement("td");
+
+			if (data[i].reimbResolvedString != null) {
+				cell4.innerHTML = data[i].reimbResolvedString;
+			} else {
+				cell4.innerHTML = "---";
+			}
+
+			row.appendChild(cell4);
+
+			let cell5 = document.createElement("td");
+			let popup = document.createElement("div");
+			popup.setAttribute("class", "popup");
+			popup.setAttribute("onclick", "popupFunction(" + i + ")")
+			popup.setAttribute("id", "popup-btn");
+			popup.innerHTML = "";
+			let text = document.createElement("span");
+			text.setAttribute("class", "popuptext");
+			text.setAttribute("id", "myPopup" + i);
+			text.innerHTML = data[i].reimbDescription;
+
+			popup.appendChild(text);
+			cell5.appendChild(popup);
+			row.appendChild(cell5);
+
+			let cell6 = document.createElement("td");
+
+			if (data[i].reimbReciept != null) {
+				cell6.innerHTML = data[i].reimbReciept;
+			} else {
+				cell6.innerHTML = "---";
+			}
+
+			row.appendChild(cell6);
+
+			let cell7 = document.createElement("td");
+
+			if (data[i].reimbResolver != null && data[i].reimbResolver != 0) {
+				cell7.innerHTML = data[i].reimbResolver;	
+			} else {
+				cell7.innerHTML = "---";
+			}
+
+			row.appendChild(cell7);
+
+			let cell8 = document.createElement("td");
+			cell8.innerHTML = data[i].reimbType;
+			row.appendChild(cell8);
+
+			let cell9 = document.createElement("td");
+			cell9.innerHTML = data[i].reimbStatus;
+			row.appendChild(cell9);
+			if (data[i].reimbStatus == "pending") {
+				cell9.setAttribute("id", "pending");
+			} else if (data[i].reimbStatus == "approved") {
+				cell9.setAttribute("id", "approved");
+			} else {
+				cell9.setAttribute("id", "denied");
+			}
+			tableBody.appendChild(row);
+		}
+		ticketTable.appendChild(tableBody);
+		contentDiv.appendChild(ticketTable);
+	}
+}
+
+async function createTicketPage(data, createdTicket) {
 
 	tab1.className = "";
 	tab2.className = "";
@@ -344,8 +355,13 @@ async function createTicketPage(data) {
 		tab5.className = "";
 	}
 
-	mainHeader.innerHTML = "Create a New Reimbursement Ticket:";
-	whipeMain();
+	if (createdTicket == true) {
+		mainHeader.innerHTML = "Ticket Successfully Created";
+	} else {
+		mainHeader.innerHTML = "Create a New Reimbursement Ticket:";	
+	}
+	
+	document.getElementById("content-div").remove();
 	let contentDiv = document.createElement("div");
 	contentDiv.setAttribute("id", "content-div");
 	mainDiv.appendChild(contentDiv);
@@ -366,7 +382,7 @@ async function createTicketPage(data) {
 	let descriptionDiv = document.createElement("div");
 	let descriptionLabel = document.createElement("p");
 	let descriptionInput = document.createElement("textarea");
-	descriptionLabel.innerHTML = "Description:";
+	descriptionLabel.innerHTML = "Description(Optional):";
 	descriptionInput.setAttribute("class", "form-control hover");
 	descriptionInput.setAttribute("id", "reimb-description");
 	descriptionDiv.appendChild(descriptionLabel);
@@ -379,7 +395,7 @@ async function createTicketPage(data) {
 	typeIdLabel.innerHTML = "Reimbursement Type:";
 
 	let label1 = document.createElement("label");
-	label1.innerHTML = "Travel";
+	label1.innerHTML = "Lodging";
 	label1.setAttribute("for", "type1");
 
 	let typeIdInput1 = document.createElement("input");
@@ -387,13 +403,12 @@ async function createTicketPage(data) {
 	typeIdInput1.setAttribute("name", "type");
 	typeIdInput1.setAttribute("id", "type1");
 	typeIdInput1.setAttribute("value", "1");
-	typeIdInput1.innerHTML = "Travel";
-
-	typeIdDiv.appendChild(label1);
+	
 	typeIdDiv.appendChild(typeIdInput1);
+	typeIdDiv.appendChild(label1);
 
 	let label2 = document.createElement("label");
-	label2.innerHTML = "Relocation";
+	label2.innerHTML = "Food";
 	label2.setAttribute("for", "type2");
 
 	let typeIdInput2 = document.createElement("input");
@@ -401,13 +416,12 @@ async function createTicketPage(data) {
 	typeIdInput2.setAttribute("name", "type");
 	typeIdInput2.setAttribute("id", "type2");
 	typeIdInput2.setAttribute("value", "2");
-	typeIdInput2.innerHTML = "Relocation";
-
-	typeIdDiv.appendChild(label2);
+	
 	typeIdDiv.appendChild(typeIdInput2);
+	typeIdDiv.appendChild(label2);
 
 	let label3 = document.createElement("label");
-	label3.innerHTML = "Medical";
+	label3.innerHTML = "Travel";
 	label3.setAttribute("for", "type3");
 
 	let typeIdInput3 = document.createElement("input");
@@ -415,13 +429,12 @@ async function createTicketPage(data) {
 	typeIdInput3.setAttribute("name", "type");
 	typeIdInput3.setAttribute("id", "type3");
 	typeIdInput3.setAttribute("value", "3");
-	typeIdInput3.innerHTML = "Medical";
 
-	typeIdDiv.appendChild(label3);
 	typeIdDiv.appendChild(typeIdInput3);
+	typeIdDiv.appendChild(label3);
 
 	let label4 = document.createElement("label");
-	label4.innerHTML = "Business Expense";
+	label4.innerHTML = "Other (specify in description)";
 	label4.setAttribute("for", "type4");
 
 	let typeIdInput4 = document.createElement("input");
@@ -429,24 +442,9 @@ async function createTicketPage(data) {
 	typeIdInput4.setAttribute("name", "type");
 	typeIdInput4.setAttribute("id", "type4");
 	typeIdInput4.setAttribute("value", "4");
-	typeIdInput4.innerHTML = "Business Expense";
 
-	typeIdDiv.appendChild(label4);
 	typeIdDiv.appendChild(typeIdInput4);
-
-	let label5 = document.createElement("label");
-	label5.innerHTML = "Other (specify in description)";
-	label5.setAttribute("for", "type5");
-
-	let typeIdInput5 = document.createElement("input");
-	typeIdInput5.setAttribute("type", "radio");
-	typeIdInput5.setAttribute("name", "type");
-	typeIdInput5.setAttribute("id", "type5");
-	typeIdInput5.setAttribute("value", "5");
-	typeIdInput5.innerHTML = "Other (specifiy in description)";
-
-	typeIdDiv.appendChild(label5);
-	typeIdDiv.appendChild(typeIdInput5);
+	typeIdDiv.appendChild(label4);
 
 	createTicketForm.appendChild(amountDiv);
 	createTicketForm.appendChild(typeIdDiv);
@@ -460,44 +458,57 @@ async function createTicketPage(data) {
 	contentDiv.appendChild(createTicketForm);
 	contentDiv.appendChild(createButton);
 
-	createButton.addEventListener('click', function () {createTicket(data);});
-	console.log("yet still called");
-}
+	createButton.addEventListener('click', function () {createTicket(data);});}
 
 async function createTicket(data) {
 
 	let reimbAmount = document.getElementById("reimb-amount").value;
 	let reimbDescription = document.getElementById("reimb-description").value;
 
-	let types = document.getElementsByName("type"); 
-	for(var i = 0; i < types.length; i++) { 
-		if(types[i].checked) {
-			let reimbTypeId = types[i].value;			
+	if (Number(reimbAmount) != undefined && typeof Number(reimbAmount) === 'number') {
+		if (reimbDescription.length < 250) {
 
-			let ticketInfo = {
-				userId:data["userId"],
-				reimbAmount:reimbAmount,
-				reimbDescription:reimbDescription,
-				reimbTypeId:reimbTypeId
-			};
+			let types = document.getElementsByName("type"); 
+			for(var i = 0; i < types.length; i++) { 
+				if(types[i].checked) {
+					let reimbTypeId = types[i].value;			
 
-			let response = await fetch(url+'create-ticket', {
-				method:'POST',
-				body:JSON.stringify(ticketInfo),
-				credentials:'include'
-			});
+					let ticketInfo = {
+						userId:data["userId"],
+						reimbAmount:reimbAmount,
+						reimbDescription:reimbDescription,
+						reimbTypeId:reimbTypeId
+					};
 
-			if (response.status == 201) {
-				createTicketPage();
-				mainHeader.innerHTML = "Reimbursement Ticket Successfully Created";
-			} else {
-				mainHeader.innerHTML = "Failed to Create Reimbursement Ticket";
+					let response = await fetch(url+'create-ticket', {
+						method:'POST',
+						body:JSON.stringify(ticketInfo),
+						credentials:'include'
+					});
+
+					if (response.status == 201) {
+						let createdTicket = true;
+						createTicketPage(data, createdTicket);
+					} else {
+						let failurePara = document.createElement("p");
+						failurePara.innerHTML = "Error. Failed to Create Reimbursement Ticket.";
+						document.getElementById("div-for-warning").append(failurePara);
+					}
+				}
 			}
+
+		} else {
+			let failurePara = document.createElement("p");
+			failurePara.innerHTML = "Error. Description must by under 250 characters.";
+			document.getElementById("div-for-warning").append(failurePara);
 		}
+
+	} else {
+		let failurePara = document.createElement("p");
+		failurePara.innerHTML = "Error. Entered Reimbursement Amount is Invald.";
+		document.getElementById("div-for-warning").append(failurePara);
 	}
 }
-
-
 
 async function reviewTickets(userData) {
 	let response = await fetch(url+'review-tickets',  {
@@ -510,8 +521,6 @@ async function reviewTickets(userData) {
 		let textData = await response.text()
 		let data = JSON.parse(textData);
 
-		sessionStorage.setItem("page", "reviewTickets");
-
 		tab1.className = ""
 		tab2.className = "";
 		tab3.className = "";
@@ -519,12 +528,9 @@ async function reviewTickets(userData) {
 		document.getElementById("tab-5").className = "";
 
 		mainHeader.innerHTML = "List of Submitted Reimbursement Tickets:";
-		whipeMain();
+		document.getElementById("content-div").remove();
 
 		let selectorDiv = document.createElement("div");
-
-		//let statusSelectorLabel = document.createElement("label");
-		//statusSelectorLabel.setAttribute("for", "status-selector");
 		let statusSelector = document.createElement("select");
 		statusSelector.setAttribute("name", "status-selector");
 		let allOption = document.createElement("option");
@@ -567,7 +573,6 @@ async function reviewTickets(userData) {
 		headRow.setAttribute("id", "ticket-head-row");
 
 		let ticketHead1 = document.createElement("th");
-		//let ticketHead11 = document.createElement("th");
 		let ticketHead2 = document.createElement("th");
 		let ticketHead3 = document.createElement("th");
 		let ticketHead4 = document.createElement("th");
@@ -577,10 +582,8 @@ async function reviewTickets(userData) {
 		let ticketHead8 = document.createElement("th");
 		let ticketHead9 = document.createElement("th");
 		let ticketHead10 = document.createElement("th");
-		// let ticketHead10 = document.createElement("th");
 
 		headRow.appendChild(ticketHead1);
-		//headRow.appendChild(ticketHead11);
 		headRow.appendChild(ticketHead2);
 		headRow.appendChild(ticketHead3);
 		headRow.appendChild(ticketHead4);
@@ -590,10 +593,8 @@ async function reviewTickets(userData) {
 		headRow.appendChild(ticketHead8);
 		headRow.appendChild(ticketHead9);
 		headRow.appendChild(ticketHead10);
-		// headRow.appendChild(ticketHead10);
 
 		ticketHead1.innerHTML = "Ticket Id";
-		//ticketHead11.innerHTML = "Username";
 		ticketHead2.innerHTML = "Amount";
 		ticketHead3.innerHTML = "Date Submitted";
 		ticketHead4.innerHTML = "Date Resolved";
@@ -702,22 +703,9 @@ async function reviewTickets(userData) {
 					}
 
 					let cell10 = document.createElement("td");
+					cell10.setAttribute("id", "cell-10");
 					if (data[i].reimbStatus == "pending") {
-						// let approveBtn = document.createElement("button");
-						// approveBtn.setAttribute("onclick", "approved(" + i + ")");
-						// approveBtn.innerHTML = "APPROVE";
-
-						// let declineBtn = document.createElement("button");
-						// declineBtn.setAttribute("onclick", "declined(" + i + ")");
-						// declineBtn.innerHTML = "DECLINE";
-
-						// cell10.appendChild(approveBtn);
-						// cell10.appendChild(declineBtn);
-
-						//let reviewDiv = document.createElement("div");
-
-						//let reviewLabel = document.createElement("label");
-						//reviewLabel.setAttribute("for", "review-ticket");
+	
 						let reviewSelector = document.createElement("select");
 						reviewSelector.setAttribute("name", "review-ticket");
 						reviewSelector.setAttribute("id", "rev-" + i);
@@ -726,49 +714,25 @@ async function reviewTickets(userData) {
 						let declineOption = document.createElement("option");
 
 						noneOption.innerHTML = "---";
-						//allOption.setAttribute("value", "no filter");
 						approveOption.innerHTML = "APPROVE";
 						approveOption.setAttribute("value", "2");
 						declineOption.innerHTML = "DECLINE";
 						declineOption.setAttribute("value", "3");
-
-						//let statusSelectorBtn = document.createElement("button");
-						//statusSelectorBtn.innerHTML = "Filter By Status";
-						//statusSelectorBtn.setAttribute("id", "status-selector-btn"); 
 
 						reviewSelector.appendChild(noneOption);
 						reviewSelector.appendChild(approveOption);
 						reviewSelector.appendChild(declineOption);
 
 						 cell10.appendChild(reviewSelector);
-						//selectorDiv.appendChild(reviewBtn);
-
-						// approveBtn.addEventListener('click', function () {
-						// 	approveRequest(data[i].userId);
-						// 	reviewTickets(userData);
 
 						let revBtn = document.createElement("button");
-						// revBtn.setAttribute("id", "rev-btn" + i);
+						revBtn.setAttribute("id", "rev-btn");
 						revBtn.setAttribute('onclick', 'sendReview(' + i + ', ' + data[i].reimbId + ', ' + userData["userId"] + ')');
-						// revBtn.setAttribute("onclick", "sendReview(" + userData + ", " + i + ", " + data[i].reimbId + ")");
-						// revBtn.setAttribute('onclick', 'crunk()');
-						//revBtn.addEventListener('click', function () {sendReview(userData, i, data);});
-
-						//revBtn.addEventListener('click', function () {sendReview(userData, i, data);})
 						revBtn.innerHTML = "Submit";
 
 						cell10.appendChild(revBtn);
-
-						// let crunk = function (userData, i, data) {
-							
-						// }
-
-						// let reviewStatus = reviewSelector[reviewSelector.selectedIndex].value;
-						// revBtn.addEventListener('click', function () {sendReview(reviewStatus)});
-
 						}
 					
-
 					row.appendChild(cell10);
 					tableBody.appendChild(row);
 
@@ -777,191 +741,9 @@ async function reviewTickets(userData) {
 				}
 			}
 		}
-
 		ticketTable.appendChild(tableBody);
 		contentDiv.appendChild(ticketTable);
-	}
-	
-}
-
-
-async function viewTickets(userId) {
-
-	//let userId = Number(userIdString);
-
-	//console.log(userId);
-
-	let response = await fetch(url+'view-tickets', {
-		method:'POST',
-		body:JSON.stringify(userId),
-		credentials:'include'
-	});
-
-	if (response.status == 202) {
-
-		sessionStorage.setItem("page", "viewTickets");
-
-		console.log(response);
-
-		let textData = await response.text()
-
-		console.log(textData);
-
-		let data = JSON.parse(textData);
-
-		console.log(data);
-
-
-		tab1.className = "";
-		tab2.className = "current-tab";
-		tab3.className = "";
-		tab4.className = "";
-		if (tab5 != null) {
-			tab5.className = "";
-		}
-		mainHeader.innerHTML = "Your Reimbursement Tickets:";
-		whipeMain();
-		let contentDiv = document.createElement("div");
-		contentDiv.setAttribute("id", "content-div");
-		mainDiv.appendChild(contentDiv);
-
-		let ticketTable = document.createElement("table");
-		ticketTable.setAttribute("id", "ticket-table");
-		ticketTable.setAttribute("class", "table");
-
-		let headRow = document.createElement("tr");
-		headRow.setAttribute("id", "ticket-head-row");
-
-		let ticketHead1 = document.createElement("th");
-		let ticketHead2 = document.createElement("th");
-		let ticketHead3 = document.createElement("th");
-		let ticketHead4 = document.createElement("th");
-		let ticketHead5 = document.createElement("th");
-		let ticketHead6 = document.createElement("th");
-		let ticketHead7 = document.createElement("th");
-		let ticketHead8 = document.createElement("th");
-		let ticketHead9 = document.createElement("th");
-		// let ticketHead10 = document.createElement("th");
-
-		headRow.appendChild(ticketHead1);
-		headRow.appendChild(ticketHead2);
-		headRow.appendChild(ticketHead3);
-		headRow.appendChild(ticketHead4);
-		headRow.appendChild(ticketHead5);
-		headRow.appendChild(ticketHead6);
-		headRow.appendChild(ticketHead7);
-		headRow.appendChild(ticketHead8);
-		headRow.appendChild(ticketHead9);
-		// headRow.appendChild(ticketHead10);
-
-		ticketHead1.innerHTML = "Id ";
-		ticketHead2.innerHTML = "Amount";
-		ticketHead3.innerHTML = "Date Submitted";
-		ticketHead4.innerHTML = "Date Resolved";
-		ticketHead5.innerHTML = "Description";
-		ticketHead6.innerHTML = "Reciept";
-		ticketHead7.innerHTML = "Resolver Id";
-		ticketHead8.innerHTML = "Type";
-		ticketHead9.innerHTML = "Status";
-
-		let tableHead = document.createElement("thead");
-		tableHead.setAttribute("class", "thead-dark");
-
-		tableHead.appendChild(headRow);
-		ticketTable.appendChild(tableHead);
-
-		let tableBody = document.createElement("tbody");
-		
-		for (var i = 0; i < data.length; i++) {
-
-			let row = document.createElement("tr");
-			row.setAttribute("class", "ticket-body-row");
-	  
-			let cell = document.createElement("td");
-			cell.innerHTML = data[i].reimbId;
-			row.appendChild(cell);
-	  
-			let cell2 = document.createElement("td");
-			cell2.innerHTML = "$" + data[i].reimbAmount.toFixed(2);
-			row.appendChild(cell2);
-	  
-			let cell3 = document.createElement("td");
-			cell3.innerHTML = data[i].reimbSubmittedString;
-			row.appendChild(cell3);
-	  
-			let cell4 = document.createElement("td");
-
-			if (data[i].reimbResolvedString != null) {
-				cell4.innerHTML = data[i].reimbResolvedString;
-			} else {
-				cell4.innerHTML = "---";
-			}
-
-			row.appendChild(cell4);
-	  
-			// let cell5 = document.createElement("td");
-			// cell5.innerHTML = data[i].reimbDescription;
-			// row.appendChild(cell5);
-
-
-			let cell5 = document.createElement("td");
-			let popup = document.createElement("div");
-			popup.setAttribute("class", "popup");
-			popup.setAttribute("onclick", "popupFunction(" + i + ")")
-			popup.setAttribute("id", "popup-btn");
-			popup.innerHTML = "";
-			let text = document.createElement("span");
-			text.setAttribute("class", "popuptext");
-			text.setAttribute("id", "myPopup" + i);
-			text.innerHTML = data[i].reimbDescription;
-
-			popup.appendChild(text);
-			cell5.appendChild(popup);
-			row.appendChild(cell5);
-
-	  
-			let cell6 = document.createElement("td");
-
-			if (data[i].reimbReciept != null) {
-				cell6.innerHTML = data[i].reimbReciept;
-			} else {
-				cell6.innerHTML = "---";
-			}
-
-			row.appendChild(cell6);
-
-			let cell7 = document.createElement("td");
-
-			if (data[i].reimbResolver != null && data[i].reimbResolver != 0) {
-				cell7.innerHTML = data[i].reimbResolver;	
-			} else {
-				cell7.innerHTML = "---";
-			}
-
-			row.appendChild(cell7);
-
-			let cell8 = document.createElement("td");
-			cell8.innerHTML = data[i].reimbType;
-			row.appendChild(cell8);
-
-			let cell9 = document.createElement("td");
-			cell9.innerHTML = data[i].reimbStatus;
-			row.appendChild(cell9);
-			if (data[i].reimbStatus == "pending") {
-				cell9.setAttribute("id", "pending");
-			} else if (data[i].reimbStatus == "approved") {
-				cell9.setAttribute("id", "approved");
-			} else {
-				cell9.setAttribute("id", "denied");
-			}
-
-			tableBody.appendChild(row);
-		}
-
-		ticketTable.appendChild(tableBody);
-
-		contentDiv.appendChild(ticketTable);
-	}
+	}	
 }
 
 async function signout() {
@@ -972,30 +754,27 @@ async function signout() {
 
 	if (response.status == 200) {
 		location.reload();
+	} else {
+		let failurePara = document.createElement("p");
+		failurePara.innerHTML = "Signout Error.";
+		document.getElementById("div-for-warning").append(failurePara);
 	}
-	divForWarning.innerHTML = "Signout Error";
 }
 
-//Minor Functions
 function popupFunction(i) {
 	var popup = document.getElementById("myPopup" + i);
 	popup.classList.toggle("show");
-	//document.getElementById("popup-btn").addEventListener('cluck', popupFunction(i));
 }
 
 async function sendReview(i, reimbId, reimbResolver) {
-	//var revButton = document.getElementById("rev-btn");
 	let revSelector = document.getElementById("rev-" + i);
 	let reimbStatusId = revSelector[revSelector.selectedIndex].value;
-	// console.log(reimbId);
-	// console.log(revStatus);
 
 	let revInfo = {
 		reimbId:reimbId,
 		reimbStatusId:reimbStatusId,
 		reimbResolver:reimbResolver
 	}
-
 	let response = await fetch(url+'send-review', {
 		method:'PATCH',
 		body:JSON.stringify(revInfo),
@@ -1003,39 +782,28 @@ async function sendReview(i, reimbId, reimbResolver) {
 	});
 
 	if (response.status == 200) {
-		location.reload();
+		document.getElementById("rev-" + i).remove();
+		document.getElementById("rev-btn").remove();
+		let message = document.createElement("p");
+		message.innerHTML = "Submitted";
+		document.getElementById("cell-10").appendChild(message);
 	} else {
 
-		bump();
+		addDivToWarningDiv();
 
 		if (divForWarning.childElementCount === 1) {
 			let invalidPara = document.createElement("p");
+			invalidPara.setAttribute("id", "invalid-para");
 			invalidPara.innerHTML = "Error. Failed to Update Reimbursement Ticket.";
 			divForWarning.append(invalidPara);
 		}
-
 	}
 }
-
-async function sha256(str) {
-	const buf = await crypto.subtle.digest("SHA-256", new TextEncoder("utf-8").encode(str));
-	return Array.prototype.map.call(new Uint8Array(buf), x=>(('00'+x.toString(16)).slice(-2))).join('');
-  }
 
 function mustLoginFirst() {
 	mainHeader.innerHTML = "You Must First Login:"
 }
-
-function whipeMain() {
-	// loginFormInner.remove();
-	// loginBtnDiv.remove();
-	document.getElementById("content-div").remove();
-}
-
-function getInvalidPara() {
-	let invalidPara = document.createElement("p");
-	//let invalidNode = document.createTextNode("Invalid Username or Password");
-	invalidPara.innerHTML = "Invalid Username or Password";
-	//invalidPara.append(invalidNode);
-	return invalidPara;
+function addDivToWarningDiv() {
+	let divForWarningDiv = document.createElement("div");
+	divForWarning.appendChild(divForWarningDiv);
 }

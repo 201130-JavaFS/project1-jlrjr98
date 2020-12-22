@@ -59,41 +59,11 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 			
 		} catch (NullPointerException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			log.error("Runtime Error: ", e);
 		}
 		
 		return null;
 	}
-	
-//	@Override
-//	public String getUsernameByUsernameAndPassword(String username, String password) throws BusinessException {
-//		
-//		String verifiedUsername = null;
-//
-//		try (Connection connection = RevConnection.getConnection()) {
-//
-//			String sql = RevSearchQueries.GET_USERNAME_BY_USERNAME_AND_PASSWORD;
-//			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//			preparedStatement.setString(1, username);
-//			preparedStatement.setString(2, password);
-//			
-//			ResultSet resultSet = preparedStatement.executeQuery();
-//			
-//			if (resultSet.next()) {
-//				verifiedUsername = resultSet.getString("ers_username");
-//			}
-//			
-//		} catch (ClassNotFoundException | SQLException e) {
-//
-//			e.printStackTrace();
-//		}
-//		
-//		if (verifiedUsername.equals(username)) {
-//			return verifiedUsername;
-//		}
-//		
-//		return verifiedUsername;
-//		
-//	}
 	
 	@Override
 	public List<ReimbTicket> getTicketsByUserId(int userId) throws BusinessException {
@@ -113,17 +83,15 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 				ReimbTicket reimbTicket = new ReimbTicket(
 						resultSet.getInt("reimb_id"),
 						resultSet.getBigDecimal("reimb_amount"),
-//						resultSet.getTimestamp("reimb_submitted"),
-//						resultSet.getTimestamp("reimb_resolved"),
 						resultSet.getString("reimb_submitted"),
 						resultSet.getString("reimb_resolved"),
 						resultSet.getString("reimb_description"),
 						resultSet.getBlob("reimb_reciept"),
 						resultSet.getInt("reimb_author"),
 						resultSet.getInt("reimb_resolver"),
-						resultSet.getInt("reimb_status_id"),
+						//resultSet.getInt("reimb_status_id"),
 						resultSet.getString("reimb_status"),
-						resultSet.getInt("reimb_type_id"),
+						//resultSet.getInt("reimb_type_id"),
 						resultSet.getString("reimb_type"));
 				
 				userTicketList.add(reimbTicket);
@@ -133,6 +101,7 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			log.error("Runtime Error: ", e);
 		}
 		
 		return null;
@@ -162,9 +131,9 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 							resultSet.getBlob("reimb_reciept"),
 							resultSet.getInt("reimb_author"),
 							resultSet.getInt("reimb_resolver"),
-							resultSet.getInt("reimb_status_id"),
+							//resultSet.getInt("reimb_status_id"),
 							resultSet.getString("reimb_status"),
-							resultSet.getInt("reimb_type_id"),
+							//resultSet.getInt("reimb_type_id"),
 							resultSet.getString("reimb_type"));
 					
 					listOfAllTickets.add(reimbTicket);
@@ -175,6 +144,7 @@ public class RevSearchDAOImpl implements RevSearchDAO {
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			log.error("Runtime Error: ", e);
 		}		
 
 		return null;

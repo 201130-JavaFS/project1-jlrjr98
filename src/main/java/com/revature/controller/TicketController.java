@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.exception.BusinessException;
 import com.revature.model.ReimbTicket;
@@ -18,22 +15,15 @@ import com.revature.model.DTO.TicketDTO;
 import com.revature.service.RevInsertService;
 import com.revature.service.RevSearchService;
 import com.revature.service.RevUpdateService;
-import com.revature.service.impl.RevInsertServiceImpl;
-import com.revature.service.impl.RevSearchServiceImpl;
-import com.revature.service.impl.RevUpdateServiceImpl;
 
 public class TicketController {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
-	private RevSearchService revSearchService = new RevSearchServiceImpl();
-	private RevInsertService revInsertService = new RevInsertServiceImpl();
-	private RevUpdateService revUpdateService = new RevUpdateServiceImpl();
-
-	private static final Logger log = LogManager.getLogger(TicketController.class); 
+	private RevSearchService revSearchService = new RevSearchService();
+	private RevInsertService revInsertService = new RevInsertService();
+	private RevUpdateService revUpdateService = new RevUpdateService(); 
 	
 	public void getUserTickets(HttpServletRequest req, HttpServletResponse res) throws IOException, BusinessException {
-		
-		log.info("in TicketController getUserTickets");
 		
 		if (req.getMethod().equals("POST")) {
 		
@@ -48,14 +38,9 @@ public class TicketController {
 			}
 			
 			String body = new String(bodyBuilder);
-			TicketDTO ticketDTO = objectMapper.readValue(body, TicketDTO.class);
-			
-			log.info("about to enter Service");
-			
+			TicketDTO ticketDTO = objectMapper.readValue(body, TicketDTO.class);			
 			
 			List<ReimbTicket> ticketList  = revSearchService.getUserTickets(ticketDTO.userId);
-			
-			log.info("just left Service");
 			
 			if (ticketList != null && !(ticketList.isEmpty())) {
 				
@@ -84,12 +69,8 @@ public class TicketController {
 				if (httpSession != null) {
 					httpSession.invalidate();
 				}
-				
 			}
-			
-			
 		}
-		
 	}
 
 	public void createTicket(HttpServletRequest req, HttpServletResponse res) throws IOException, BusinessException {
@@ -108,8 +89,7 @@ public class TicketController {
 			
 			String body = new String(bodyBuilder);
 			TicketDTO ticketDTO = objectMapper.readValue(body, TicketDTO.class);
-			
-			
+				
 			
 			if (revInsertService.createTicket(ticketDTO.userId, ticketDTO.reimbAmount, ticketDTO.reimbDescription, ticketDTO.reimbTypeId)) {
 				
@@ -120,7 +100,6 @@ public class TicketController {
 				res.setStatus(401);
 				res.getWriter().print("Ticket Creation Failure");
 			}
-			
 		}
 	}
 
@@ -146,21 +125,19 @@ public class TicketController {
 				
 				HttpSession httpSession = req.getSession();
 				
-				//if (httpSession != null) {
+				if (httpSession != null) {
 				
-				httpSession.setAttribute("acquiredAllTickets", true);
+					httpSession.setAttribute("acquiredAllTickets", true);
+					
+					res.setStatus(200);
+					
+					String json = objectMapper.writeValueAsString(listOfAllTickets);
+					res.getWriter().print(json);
 				
-				res.setStatus(200);
-				
-				String json = objectMapper.writeValueAsString(listOfAllTickets);
-				res.getWriter().print(json);
-				
-				//}
+				}
 				
 			} else if (listOfAllTickets != null && listOfAllTickets.isEmpty()){
 							
-//				HttpSession httpSession = req.getSession();
-//				httpSession.setAttribute("userId", ticketDTO);
 				HttpSession httpSession = req.getSession();
 				httpSession.setAttribute("acquiredAllTickets", false);
 				
@@ -190,7 +167,6 @@ public class TicketController {
 			BufferedReader bufferedReader = req.getReader();
 			StringBuilder bodyBuilder = new StringBuilder();
 			String line = bufferedReader.readLine();
-			
 			
 			while (line != null) {
 				bodyBuilder.append(line);

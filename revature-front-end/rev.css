@@ -19,10 +19,6 @@ body {
     color: #F7C331;
 }
 
-/* input {
-    margin: 10px;
-} */
-
 input:hover {
     background-color: lightblue;
 }
@@ -64,10 +60,6 @@ button:hover {
     margin-top: 20px;
 }
 
-/* #employee-table th {
-    margin: 10px;
-} */
-
 td {
     padding: 10px;
 }
@@ -105,11 +97,6 @@ td {
     text-align: center;
 }
 
-/* #ticket-head-row *, .ticket-body-row * {
-    border-width: 3px;
-    border-style:solid;
-} */
-
 #ticket-head-row>th, #ticket-head-row>td {
     margin:3px;
 }
@@ -140,15 +127,7 @@ span {
     color:red;
     padding:3px 5px;
     background-color:white;
-    /* border-width:100px;
-    border-color:#F7C331; */
 }
-
-/* #logo-div {
-    display: flex;
-    justify-content: left;
-    margin: 20px;
-} */
 
 .popup {
     position: relative;
@@ -158,13 +137,11 @@ span {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    /* background-color: lightblue; */
     border-width: 10px;
     border-style: solid;
-    border-color: #6B7A8F;
+    border-color: #3BBA9C;
   }
-  
-  /* The actual popup */
+
   .popup .popuptext {
     visibility: hidden;
     width: 160px;
@@ -180,7 +157,6 @@ span {
     margin-left: -80px;
   }
   
-  /* Popup arrow */
   .popup .popuptext::after {
     content: "";
     position: absolute;
@@ -192,14 +168,10 @@ span {
     border-color: #555 transparent transparent transparent;
   }
   
-  /* Toggle this class - hide and show the popup */
   .popup .show {
     visibility: visible;
-    /* -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s; */
   }
   
-  /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
     from {opacity: 0;} 
     to {opacity: 1;}

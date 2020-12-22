@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class RevConnection {
+	
+	private static final Logger log = LogManager.getLogger(RevConnection.class); 
 	
 	private static Connection connection;
 
@@ -18,6 +23,7 @@ public class RevConnection {
 			Class.forName(DbUtilProps.DRIVER);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			log.error("Runtime Exception: ", e);
 		}
 		
 		String url=DbUtilProps.URL;			
