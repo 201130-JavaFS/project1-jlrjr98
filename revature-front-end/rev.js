@@ -728,7 +728,7 @@ async function reviewTickets(userData) {
 						 cell10.appendChild(reviewSelector);
 
 						let revBtn = document.createElement("button");
-						revBtn.setAttribute("id", "rev-btn");
+						revBtn.setAttribute("id", "rev-btn-" + i);
 						revBtn.setAttribute('onclick', 'sendReview(' + i + ', ' + data[i].reimbId + ', ' + userData["userId"] + ')');
 						revBtn.innerHTML = "Submit";
 
@@ -785,10 +785,11 @@ async function sendReview(i, reimbId, reimbResolver) {
 
 	if (response.status == 200) {
 		document.getElementById("rev-" + i).remove();
-		document.getElementById("rev-btn").remove();
+		document.getElementById("rev-btn-" + i).remove();
 		let message = document.createElement("p");
 		message.innerHTML = "Submitted";
 		document.getElementById("cell-10").appendChild(message);
+		alert("Note: It may take processing time to view your changes.");
 	} else {
 
 		addDivToWarningDiv();

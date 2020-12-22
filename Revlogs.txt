@@ -5962,3 +5962,108 @@ java.lang.NullPointerException: null
 2020-12-21 20:05:20 HST INFO  MasterServlet:33 - in doGet
 2020-12-21 20:05:21 HST DEBUG CorsFilter:22 - CORS Filter leveraged
 2020-12-21 20:05:21 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:17:22 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:17:22 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:17:54 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:17:54 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:18:02 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:18:02 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:18:02 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:18:02 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:18:02 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:18:02 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:18:12 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:18:12 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:18:12 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:18:12 HST DEBUG MasterServlet:57 - About to enter employee controller
+2020-12-22 04:18:18 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:18:18 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:18:18 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:22:18 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:22:18 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:22:18 HST INFO  MasterServlet:138 - in doPatch
+2020-12-22 04:22:18 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:22:37 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:22:37 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:22:37 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:07 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:07 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:07 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:07 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:12 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:12 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:28 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:28 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:28 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:28 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:28 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:25:28 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:30 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:25:30 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:25:30 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:25:30 HST DEBUG MasterServlet:57 - About to enter employee controller
+2020-12-22 04:26:40 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:40 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:26:40 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:26:44 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:44 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:26:44 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:44 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:26:49 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:49 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:26:49 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:49 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:49 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:26:49 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:26:50 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:26:50 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:26:50 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:28:14 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:28:14 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:28:14 HST INFO  MasterServlet:138 - in doPatch
+2020-12-22 04:28:14 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:28:15 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:28:15 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:28:15 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:28:15 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:28:15 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:28:15 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:28:17 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:28:17 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:28:17 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:31:09 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:09 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:31:10 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:10 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:31:11 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:11 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:31:22 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:22 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:31:22 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:22 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:22 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:31:22 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:31:54 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:31:54 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:31:54 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:32:01 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:01 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:32:01 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:01 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:32:05 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:05 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:32:05 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:05 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:05 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:32:05 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:32:07 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:07 HST INFO  MasterServlet:130 - in doPost
+2020-12-22 04:32:07 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:32:17 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:17 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:32:17 HST INFO  MasterServlet:138 - in doPatch
+2020-12-22 04:32:17 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:33:15 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:33:15 HST INFO  MasterServlet:33 - in doGet
+2020-12-22 04:33:15 HST DEBUG CorsFilter:22 - CORS Filter leveraged
+2020-12-22 04:33:15 HST INFO  MasterServlet:33 - in doGet

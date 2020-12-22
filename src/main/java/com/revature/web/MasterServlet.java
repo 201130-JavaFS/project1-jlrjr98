@@ -17,7 +17,7 @@ import com.revature.controller.TicketController;
 import com.revature.exception.BusinessException;
 
 public class MasterServlet extends HttpServlet {	
-	
+	 
 	private static final Logger log = LogManager.getLogger(MasterServlet.class); 
 
 	private static final long serialVersionUID = 1L;
