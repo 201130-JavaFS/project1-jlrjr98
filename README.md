@@ -3,7 +3,7 @@
 ## Project Description
 An application to serve as an Expense Reimbursement System (ERS). Employees are able to log in, submit requests for reimbursements, and view past requests. Financial Managers have the additional capability of reviewing other employees' reimbursement requests, approving or denying them.
 
-##Technologies Used
+## Technologies Used
 * Java 8
 * Spring Tool Suite 4 version 4.8.0
 * Maven version 2.22.1
@@ -19,7 +19,7 @@ An application to serve as an Expense Reimbursement System (ERS). Employees are 
 * DBeaver version 7.2.5
 * Git
 
-##Features
+## Features
 **Ready Features**
 * Login
 * View all your submitted reimbursement request tickets
@@ -34,15 +34,15 @@ An application to serve as an Expense Reimbursement System (ERS). Employees are 
 * Add the ability for Financial Managers to filter tickets by more options than just status.
 * Add the ability for users to filter their own tickets by various options
 
-##Getting Started
+## Getting Started
 * git clone https://github.com/201130-JavaFS/project1-jlrjr98.git
 * git pull
 * Open the project in Spring Tool Suite 4 or equivalent. Perform a Maven Update Project to acquire all the necessary dependencies
 * Create the following tables in a PostgreSQL database
-![](./supplemental-material/physical.jpg) using the following SQL code ![](./supplemental-material/sql.rtf)
-* Users and additional employee roles will need to be added manually using the following SQL template code ![](./supplemental-material/SQL_Template.rtf)
+![](./supplemental-material/physical.jpg) using the SQL code in supplemental-material/SQL.txt
+* Users and additional employee roles will need to be added manually using the SQL template code in supplemental-material/SQL_Template.txt
 * Set up environment variables postgresPassword and postgresUserName for your Postgres password and username respectively
 
-##Usage
+## Usage
 * In IDE, right click project > RUN AS > RUN AS SERVER
 * Open rev.html, found in directory revature-front-end, in a browser
