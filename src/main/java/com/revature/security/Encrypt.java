@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 
 import com.revature.exception.BusinessException;
 
+//Class and method used to encrypt user passwords for security
 public class Encrypt {
 	
 	private Encrypt() {}

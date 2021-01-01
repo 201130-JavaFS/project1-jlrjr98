@@ -13,6 +13,7 @@ import com.revature.dao.dbutil.queries.RevInsertQueries;
 import com.revature.exception.BusinessException;
 import com.revature.model.ReimbTicket;
 
+//DAO layer is used to retrieve/insert data from or into the database
 public class RevInsertDAOImpl implements RevInsertDAO {
 	
 	private static final Logger log = LogManager.getLogger(RevInsertDAOImpl.class);
@@ -20,6 +21,7 @@ public class RevInsertDAOImpl implements RevInsertDAO {
 	@Override
 	public boolean insertTicket(ReimbTicket reimbTicket) throws BusinessException {		
 		
+		//try with resources is used to automatically close connection afterwards
 		try (Connection connection = RevConnection.getConnection()) {
 			
 			String sql = RevInsertQueries.INSERT_REIMB_TICKET;

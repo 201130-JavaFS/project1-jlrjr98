@@ -4,6 +4,8 @@ public class RevUpdateQueries {
 	
 	private RevUpdateQueries() {}
 	
+	//SQL query for updating reimbursement tickets in the database
+	
 	public static final String UPDATE_REIMB_STATUS_ID_AND_REIMB_RESOLVER_AND_REIMB_RESOLVED_BY_REIMB_ID = ""
 			+ "UPDATE ers.ers_reimbursement "
 			+ "SET reimb_status_id = ?, reimb_resolver = ?, reimb_resolved = ? "

@@ -13,12 +13,6 @@ public class EmployeeDTO {
 		super();
 		this.username = username;
 	}
-
-//	public EmployeeDTO(int userId) {
-//		super();
-//		this.userId = userId;
-//	}
-	
 	
 	
 }

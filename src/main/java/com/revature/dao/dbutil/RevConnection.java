@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+//Setup for connection to database
 public class RevConnection {
 	
 	private static final Logger log = LogManager.getLogger(RevConnection.class); 

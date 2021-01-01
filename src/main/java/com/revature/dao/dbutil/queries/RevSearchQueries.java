@@ -4,6 +4,9 @@ public class RevSearchQueries {
 
 	private RevSearchQueries() {}
 	
+	//SQL Queries for retrieving data from the database
+	//Requires use of joins
+	
 	public static final String GET_USER_BY_USERNAME_AND_PASSWORD = ""
 			+ "SELECT ers_users_id, ers_username, user_first_name, user_last_name, user_email, user_role_id, user_role "
 			+ "FROM ers.ers_users "

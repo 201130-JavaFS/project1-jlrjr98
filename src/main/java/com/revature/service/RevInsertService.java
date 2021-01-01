@@ -8,6 +8,7 @@ import com.revature.dao.impl.RevInsertDAOImpl;
 import com.revature.exception.BusinessException;
 import com.revature.model.ReimbTicket;
 
+//Service layer for any logic that needs to apply to requests
 public class RevInsertService {
 	
 	RevInsertDAO revInsertDAO = new RevInsertDAOImpl();
@@ -16,6 +17,7 @@ public class RevInsertService {
 		
 		boolean createTicket = false;
 		
+		//checking validity of request data
 		if (reimbAmount.floatValue() > 0) {
 			
 			ReimbTicket reimbTicket = new ReimbTicket(reimbAmount, new Date(), reimbDescription, userId, 1, reimbTypeId);

@@ -14,6 +14,7 @@ import com.revature.model.DTO.LoginDTO;
 import com.revature.security.Encrypt;
 import com.revature.service.RevSearchService;
 
+//Controllers used to get data out of request objects, invoke service methods, and put data into response objects
 public class LoginController {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
@@ -34,11 +35,13 @@ public class LoginController {
 			}
 			
 			String body = new String(bodyBuilder);
+			//DTO used to hold data form requests
+			//readValue() is a Jackson method used to change JSON into a Java object
 			LoginDTO loginDTO = objectMapper.readValue(body, LoginDTO.class);
-			
 			
 			String encryptedPassword = Encrypt.encryptPassword(loginDTO.password);
 			
+			//sent to service layer
 			Employee employee = revSearchService.login(loginDTO.username, encryptedPassword);
 			
 			if (employee != null) {
@@ -48,8 +51,10 @@ public class LoginController {
 				httpSession.setAttribute("user", loginDTO);
 				httpSession.setAttribute("loggedIn", true);
 				
+				//writeValueAssString() is a Jackson method to turn Java object into JSON
 				String json = objectMapper.writeValueAsString(employee);
 				res.getWriter().print(json);
+				//change HTTP status to that of success
 				res.setStatus(202);		
 				
 			} else {

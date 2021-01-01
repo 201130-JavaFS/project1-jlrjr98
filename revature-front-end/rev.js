@@ -1,7 +1,9 @@
 "use strict";
 
+//url to back end server
 const url = 'http://localhost:8080/project-1/';
 
+//Collection of DOMs
 let tableRow = document.getElementById("t-row");
 let tab1 = document.getElementById("tab-1");
 let tab2 = document.getElementById("tab-2");
@@ -28,6 +30,7 @@ loginBtn.addEventListener('click', async function () {addDivToWarningDiv();});
 
 function login() {
 
+		//check if the user is already logged in by asking server if a session currently exists.
 		checkIfLoggedIn();
 
 		async function checkIfLoggedIn() {
@@ -55,6 +58,7 @@ function login() {
 			divForWarning.appendChild(invalidPara);
 		}
 
+		//login user and retrive their information in the response
 		async function start(username, password) {
 
 			let userInfo = {
@@ -83,6 +87,7 @@ function login() {
 				let textData = await response.text()
 				let data = JSON.parse(textData);
 
+				//configure tabs of navbar depending on whether user is a Financial Manager
 				if (data["userId"] === 1) {
 
 					tab4.innerHTML = "Review Tickets";
@@ -102,13 +107,16 @@ function login() {
 					tab4.addEventListener('click', signout);
 				}
 
+				//Send user to home page
 				home(data);
+				//add event listeners to navbar tabs so user can navigate between pages
 				tab1.addEventListener('click', function () {home(data);});
 				tab2.addEventListener('click', function () {viewTickets(data["userId"]);});
 				let createdTicket = false;
 				tab3.addEventListener('click', function () {createTicketPage(data, createdTicket);});
 		
 			} else if (divForWarning.childElementCount === 1) {
+				//post warning that user entered invalid information
 				let invalidPara = document.createElement("p");
 				invalidPara.setAttribute("id", "invalid-para");
 				invalidPara.innerHTML = "Invalid Username or Password";
@@ -120,6 +128,7 @@ function login() {
 
 async function home(data) {
 
+	//Set the current tab, so CSS will highlight it, indicating to user what page they are currently on
 	tab1.className = "current-tab";
 	tab2.className = "";
 	tab3.className = "";
@@ -129,6 +138,7 @@ async function home(data) {
 		tab5.className = "";
 	}
 
+	//Creating and appending the proper elements to the HTML to create the home page
 	mainHeader.innerHTML = "Employee Information:";
 	document.getElementById("content-div").remove();
 	let contentDiv = document.createElement("div");
@@ -188,6 +198,7 @@ async function home(data) {
 
 async function viewTickets(userId) {
 
+	//Retrieve user's tickets from database
 	let response = await fetch(url+'view-tickets', {
 		method:'POST',
 		body:JSON.stringify(userId),
@@ -206,6 +217,8 @@ async function viewTickets(userId) {
 		if (tab5 != null) {
 			tab5.className = "";
 		}
+
+		//Creating and appending the proper elements to the HTML to create the page listing user's tickets
 		mainHeader.innerHTML = "Your Reimbursement Tickets:";
 		document.getElementById("content-div").remove();
 		let contentDiv = document.createElement("div");
@@ -257,6 +270,7 @@ async function viewTickets(userId) {
 
 		let tableBody = document.createElement("tbody");
 		
+		//For loop used to create a section for each ticket that exists
 		for (var i = 0; i < data.length; i++) {
 
 			let row = document.createElement("tr");
@@ -350,12 +364,14 @@ async function createTicketPage(data, createdTicket) {
 		tab5.className = "";
 	}
 
+	//CHecks if a ticket has just been successfull created and displays appropriate message
 	if (createdTicket == true) {
 		mainHeader.innerHTML = "Ticket Successfully Created";
 	} else {
 		mainHeader.innerHTML = "Create a New Reimbursement Ticket:";	
 	}
 	
+	//Creating and appending the proper elements to the HTML to create the page for a new ticket
 	document.getElementById("content-div").remove();
 	let contentDiv = document.createElement("div");
 	contentDiv.setAttribute("id", "content-div");
@@ -457,13 +473,18 @@ async function createTicketPage(data, createdTicket) {
 
 async function createTicket(data) {
 
+	//DOMs for the entered values
 	let reimbAmount = document.getElementById("reimb-amount").value;
 	let reimbDescription = document.getElementById("reimb-description").value;
 
+	//Checks if entered reimbursement amount is a valid number
 	if (Number(reimbAmount) != undefined && typeof Number(reimbAmount) === 'number') {
+		//Checks if entered reimbursement description is within the max amount of characters
 		if (reimbDescription.length < 250) {
 
 			let types = document.getElementsByName("type"); 
+
+			//For Loop to get the value of the selected radio button
 			for(var i = 0; i < types.length; i++) { 
 				if(types[i].checked) {
 					let reimbTypeId = types[i].value;			
@@ -483,6 +504,7 @@ async function createTicket(data) {
 
 					if (response.status == 201) {
 						let createdTicket = true;
+						//recreates the page with a message indicated the ticket was successfully created
 						createTicketPage(data, createdTicket);
 					} else {
 						let failurePara = document.createElement("p");
@@ -522,6 +544,7 @@ async function reviewTickets(userData) {
 		tab4.className = "current-tab";
 		document.getElementById("tab-5").className = "";
 
+		//Creating and appending the proper elements to the HTML to create a page listing all other reimbursement tickets
 		mainHeader.innerHTML = "List of Submitted Reimbursement Tickets:";
 		document.getElementById("content-div").remove();
 
@@ -621,6 +644,7 @@ async function reviewTickets(userData) {
 
 			let selectedStatus = statusSelector[statusSelector.selectedIndex].value;
 
+			//For loop to display each ticket
 			for (var i = 0; i < data.length; i++) {
 
 				if (data[i].reimbStatus == selectedStatus && selectedStatus != "no filter" || selectedStatus == "no filter") {
@@ -706,6 +730,8 @@ async function reviewTickets(userData) {
 
 					let cell10 = document.createElement("td");
 					cell10.setAttribute("id", "cell-10");
+
+					//If statement that checks if the ticket's status is pending, adding the ability to submit a review if so
 					if (data[i].reimbStatus == "pending") {
 	
 						let reviewSelector = document.createElement("select");
@@ -748,6 +774,7 @@ async function reviewTickets(userData) {
 	}	
 }
 
+//Signout function invalidates session and reloads the site, resetting to login page
 async function signout() {
 	let response = await fetch(url+'signout', {
 		method:'GET',
@@ -763,11 +790,13 @@ async function signout() {
 	}
 }
 
+//Popup function to display Reimbursement Ticket description as a popup. Done to concerve space
 function popupFunction(i) {
 	var popup = document.getElementById("myPopup" + i);
 	popup.classList.toggle("show");
 }
 
+//Function to submit a review
 async function sendReview(i, reimbId, reimbResolver) {
 	let revSelector = document.getElementById("rev-" + i);
 	let reimbStatusId = revSelector[revSelector.selectedIndex].value;
@@ -783,6 +812,7 @@ async function sendReview(i, reimbId, reimbResolver) {
 		credentials:'include'
 	});
 
+	//After review is successfully sent, option to submit review for that ticket is removed
 	if (response.status == 200) {
 		document.getElementById("rev-" + i).remove();
 		document.getElementById("rev-btn-" + i).remove();

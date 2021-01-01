@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+//Filter to prevent Cors Errors
 public class CorsFilter implements Filter {
 	
 	private static final Logger log = LogManager.getLogger(CorsFilter.class); 

@@ -16,6 +16,7 @@ import com.revature.controller.SignoutController;
 import com.revature.controller.TicketController;
 import com.revature.exception.BusinessException;
 
+//MasterServlet recieves all requests from the Web Container, then delegates to Controllers
 public class MasterServlet extends HttpServlet {	
 	 
 	private static final Logger log = LogManager.getLogger(MasterServlet.class); 
@@ -30,13 +31,16 @@ public class MasterServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
+		//info logs included to help track down erros for debugging
 		log.info("in doGet");
 		
 		res.setContentType("application/json");
 		res.setStatus(404);
 		
+		//Base of the url is removed to gain access to only the uri
 		final String URI = req.getRequestURI().replace("/project-1/", "");
 		
+		//switch statement used to send requests to the propper controllers
 		switch (URI) {
 			
 			case "login": 
@@ -120,6 +124,8 @@ public class MasterServlet extends HttpServlet {
 				break;
 		}
 	}
+	
+	//Non GET Http Requests are sent to the doGet for the sake of code simplicity and readability
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

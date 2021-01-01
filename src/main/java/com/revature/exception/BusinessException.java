@@ -1,5 +1,6 @@
 package com.revature.exception;
 
+//Custom Exception class
 public class BusinessException extends Exception {
 
 	private static final long serialVersionUID = 1L;
