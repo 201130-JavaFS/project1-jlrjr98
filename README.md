@@ -39,8 +39,8 @@ An application to serve as an Expense Reimbursement System (ERS). Employees are 
 * git pull
 * Open the project in Spring Tool Suite 4 or equivalent. Perform a Maven Update Project to acquire all the necessary dependencies
 * Create the following tables in a PostgreSQL database
-![](./supplemental-material/physical.jpg) using the SQL code in [a relative link](SQL.txt)
-* Users and additional employee roles will need to be added manually using the SQL template code in [a relative link](SQL_Template.txt)
+![](./supplemental-material/physical.jpg) using [this SQL code](https://github.com/201130-JavaFS/project1-jlrjr98/blob/master/supplemental-material/SQL.txt)
+* Users and additional employee roles will need to be added manually using [this SQL template code](https://github.com/201130-JavaFS/project1-jlrjr98/blob/master/supplemental-material/SQL_Template.txt)
 * Set up environment variables postgresPassword and postgresUserName for your Postgres password and username respectively
 
 ## Usage
