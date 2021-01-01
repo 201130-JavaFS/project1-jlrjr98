@@ -1,34 +1,48 @@
-# Employee Reimbursment System (ERS)
+# Employee Reimbursement System (ERS) Project
 
-## Executive Summary
-The Expense Reimbursement System (ERS) will manage the process of reimbursing employees for expenses incurred while on company time. All employees in the company can login and submit requests for reimbursement and view their past tickets and pending requests. Finance managers can log in and view all reimbursement requests and past history for all employees in the company. Finance managers are authorized to approve and deny requests for expense reimbursement.
+## Project Description
+An application to serve as an Expense Reimbursement System (ERS). Employees are able to log in, submit requests for reimbursements, and view past requests. Financial Managers have the additional capability of reviewing other employees' reimbursement requests, approving or denying them.
 
-**State-chart Diagram (Reimbursement Statuses)** 
-![](./imgs/state-chart.jpg)
+##Technologies Used
+* Java 8
+* Spring Tool Suite 4 version 4.8.0
+* Maven version 2.22.1
+* Tomcat 9
+* Log4J2 version 2.13.3
+* JUnit version 5.4.2
+* Postman version 7.36.0
+* JavaScript
+* HTML
+* CSS
+* Visual Studio Code version 1.52.1
+* PostgreSQL 10
+* DBeaver version 7.2.5
+* Git
 
-**Reimbursement Types**
+##Features
+**Ready Features**
+* Login
+* View all your submitted reimbursement request tickets
+* Submit a new reimbursement request
+* Financial Managers can view all the reimbursement requests of other employees and can filter view by status (pending, approved, declined)
+* Financial Managers can approve or decline requests submitted by other employees
+* Signout
 
-Employees must select the type of reimbursement as: LODGING, TRAVEL, FOOD, or OTHER.
+**To-do List of Improvements**
+* Add the ability for users to upload receipts with reimbursement requests
+* Add the ability for Financial Managers to view employees and their relevant information even if they have not submitted a reimbursement request ticket
+* Add the ability for Financial Managers to filter tickets by more options than just status.
+* Add the ability for users to filter their own tickets by various options
 
-**Logical Model**
-![](./imgs/logical.jpg)
+##Getting Started
+* git clone https://github.com/201130-JavaFS/project1-jlrjr98.git
+* git pull
+* Open the project in Spring Tool Suite 4 or equivalent. Perform a Maven Update Project to acquire all the necessary dependencies
+* Create the following tables in a PostgreSQL database
+![](./supplemental-material/physical.jpg) using the following SQL code ![](./supplemental-material/sql.rtf)
+* Users and additional employee roles will need to be added manually using the following SQL template code ![](./supplemental-material/SQL_Template.rtf)
+* Set up environment variables postgresPassword and postgresUserName for your Postgres password and username respectively
 
-**Physical Model**
-![](./imgs/physical.jpg)
-
-**Use Case Diagram**
-![](./imgs/use-case.jpg)
-
-**Activity Diagram**
-![](./imgs/activity.jpg)
-
-## Technical Requirements
-
-The back-end system shall use JDBC to connect to a Postgres database. The application shall deploy onto a Tomcat Server. The middle tier shall use Servlet technology for dynamic Web application development. The front-end view shall use HTML/CSS/JavaScript to make an application that can call server-side components in a generally RESTful manner. Passwords shall be encrypted in Java and securely stored in the database. The middle tier shall follow proper layered architecture, have reasonable (~70%) test coverage of the service layer, and implement log4j for appropriate logging. Webpages shall be styled to be functional and readable. 
-
-**Stretch Goals:**
-* Replace JDBC with Hibernate to manage the database connection.
-* Users can upload a document or image of their receipt when submitting reimbursements which can stored in the database and reviewed by a financial manager.
-* Postgres Database shall be hosted remotely on an AWS RDS. 
-* Java application shall be hosted remotely on an EC2.
-* Static files (webpages) shall be hosted on an S3 bucket. 
+##Usage
+* In IDE, right click project > RUN AS > RUN AS SERVER
+* Open rev.html, found in directory revature-front-end, in a browser
